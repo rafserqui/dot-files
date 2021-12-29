@@ -8,7 +8,6 @@ git clone https://github.com/ryanoasis/nerd-fonts.git
 
 # Powerline Fonts
 git clone https://github.com/powerline/fonts.git --depth=1
-# install
 cd fonts
 ./install.sh
 
