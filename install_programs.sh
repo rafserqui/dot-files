@@ -30,9 +30,6 @@ flatpak install flathub com.spotify.Client
 # Skype
 flatpak install flathub com.skype.Client
 
-# Calibre
-sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-
 # R and RStudio
 sudo apt install r-base -y
 
@@ -42,8 +39,18 @@ sudo apt install ~/Downloads/rstudio-2021.09.1-372-amd64.deb -y
 # GNOME Tweaks
 sudo apt install gnome-Tweaks -y
 
-# Font Manager
-sudo apt install font-manager -y
+# Kitty Terminal
+sudo apt install kitty
+
+# Config files for kitty into .config/kitty
+mkdir ~/.config/kitty/
+cd ~/.config/kitty/
+wget https://raw.githubusercontent.com/rxyhn/bspdots/main/config/kitty/color.ini
+cp ~/Documents/dot-files/kitty.conf .
+
+# To select kitty as default terminal emulator use the command
+# sudo update-alternatives --config x-terminal-emulator
+# Then choose kitty
 
 # Anaconda
 
