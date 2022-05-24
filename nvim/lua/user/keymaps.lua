@@ -83,3 +83,5 @@ keymap("n", "k", "gk", opts)
 -- keymap("n", "<leader>tl", "Vy<C-w>wpa<CR><C-\><C-n><C-w>pj")
 -- keymap("n", "<leader>ts", "y<C-w>wpa<CR><C-\><C-n><C-w>p")
 
+-- Toggleterm send lines to terminal
+keymap("v", "<leader>ss", ":ToggleTermSendVisualLines <1> <cr>", opts)

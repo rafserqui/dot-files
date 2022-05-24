@@ -124,15 +124,25 @@ _G.packer_plugins = {
     path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/julia-vim",
     url = "https://github.com/JuliaEditorSupport/julia-vim"
   },
-  ["lightline.vim"] = {
+  ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/lightline.vim",
-    url = "https://github.com/itchyny/lightline.vim"
+    path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["neovim-ayu"] = {
     loaded = true,
     path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/neovim-ayu",
     url = "https://github.com/Shatur/neovim-ayu"
+  },
+  ["nlsp-settings.nvim"] = {
+    loaded = true,
+    path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
+    url = "https://github.com/tamago324/nlsp-settings.nvim"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,

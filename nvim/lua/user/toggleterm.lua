@@ -53,14 +53,20 @@ function _HTOP_TOGGLE()
 	htop:toggle()
 end
 
-local python = Terminal:new({ cmd = "python", hidden = true })
+local python = Terminal:new({ cmd = "python", hidden = false })
 
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
-local julia = Terminal:new({ cmd = "julia", hidden = true })
+local julia = Terminal:new({ cmd = "julia", hidden = false })
 
 function _JULIA_TOGGLE()
   julia:toggle()
+end
+
+local rlang = Terminal:new({ cmd = "R", hidden = false })
+
+function _RLANG_TOGGLE()
+  rlang:toggle()
 end

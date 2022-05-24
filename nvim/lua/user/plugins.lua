@@ -64,7 +64,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lua"
 
   -- Buffer line to see buffers open and a terminal
-  use {"akinsho/bufferline.nvim", tag = "v2.*"}
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
   use "moll/vim-bbye"
   use {"akinsho/toggleterm.nvim", tag = "v1.*"}
 
@@ -86,12 +86,14 @@ return packer.startup(function(use)
   -- Colorschemes
   use "Shatur/neovim-ayu"
 
-  -- For a lower bar with info
-  use "itchyny/lightline.vim"
+  -- Status line
+  use "nvim-lualine/lualine.nvim"
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json
+  use "jose-elias-alvarez/null-ls.nvim" -- formatters and linters
 
   -- Telescope ==> Fuzzy finder
   use "nvim-telescope/telescope.nvim"
