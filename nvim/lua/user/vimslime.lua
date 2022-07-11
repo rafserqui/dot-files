@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 vimslime.setup {
-  slime_target = { "neovim" },
+  slime_target = { "kitty" },
   slime_default_config = {
     sessionname = "julia",
     windowname = "0",

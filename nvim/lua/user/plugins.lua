@@ -113,6 +113,12 @@ return packer.startup(function(use)
   use "JuliaEditorSupport/julia-vim"
   use "jpalardy/vim-slime"
 
+  -- R Support
+  use {"jalvesaq/Nvim-R", branch = "stable" }
+
+  -- Markdown support for preview
+  use "iamcco/markdown-preview.nvim"
+
   -- Automatically set up your configuration after cloning pacer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
