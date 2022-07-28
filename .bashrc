@@ -111,5 +111,6 @@ if ! shopt -oq posix; then
 fi
 
 PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
-export PATH="$PATH:/home/rafserqui/julia-1.7.2/bin/"
+export PATH="$PATH:/home/rafserqui/julia-1.7.3/bin/"
+
 

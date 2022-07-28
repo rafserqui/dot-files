@@ -43,8 +43,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
-export PATH="$PATH:/home/rafserqui/julia-1.7.2/bin"
+PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
+export PATH="$PATH:/home/rafserqui/julia-1.7.3/bin"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
