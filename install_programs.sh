@@ -22,7 +22,7 @@ sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | 
 
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ~/Downloads/
-sudo apt install ~ /Downloads/google-chrome-stable_current_amd64.deb -y
+sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
 
 # Spotify
 flatpak install flathub com.spotify.Client
@@ -34,7 +34,7 @@ flatpak install flathub com.skype.Client
 sudo apt install r-base -y
 
 wget https://download1.rstudio.org/desktop/jammy/amd64/rstudio-2022.07.1-554-amd64.deb -P ~/Downloads/
-sudo apt install ~/Downloads/rstudio-2021.09.1-372-amd64.deb -y
+sudo apt install ~/Downloads/rstudio-2022.07.1-554-amd64.deb -y
 
 # GNOME Tweaks
 sudo apt install gnome-Tweaks -y
@@ -87,3 +87,6 @@ cd ~/Downloads/julia-dist/julia-1.7.0-linux-x86_64/julia-1.7.0/bin/
 mkdir ~/Downloads/tex-live/
 wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -P ~/Downloads/tex-live/
 tar -xvzf ~/Downloads/tex-live/install-tl-unx.tar.gz
+cd ~/Downloads/tex-live/install-tl-20220727/
+sudo ./install-tl
+
