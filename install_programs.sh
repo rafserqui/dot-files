@@ -33,7 +33,7 @@ flatpak install flathub com.skype.Client
 # R and RStudio
 sudo apt install r-base -y
 
-wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-2021.09.1-372-amd64.deb -P ~/Downloads/
+wget https://download1.rstudio.org/desktop/jammy/amd64/rstudio-2022.07.1-554-amd64.deb -P ~/Downloads/
 sudo apt install ~/Downloads/rstudio-2021.09.1-372-amd64.deb -y
 
 # GNOME Tweaks
@@ -47,6 +47,15 @@ mkdir ~/.config/kitty/
 cd ~/.config/kitty/
 wget https://raw.githubusercontent.com/rxyhn/bspdots/main/config/kitty/color.ini
 cp ~/Documents/dot-files/kitty.conf .
+cd ~/Downloads/
+
+# Install bat 
+sudo apt install bat -y
+
+# Install lsd
+cd ~/Downloads/
+wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd_0.22.0_amd64.deb -P ~/Downloads/
+sudo dpkg -i lsd_0.22.0_amd64.deb
 
 # To select kitty as default terminal emulator use the command
 # sudo update-alternatives --config x-terminal-emulator
@@ -67,6 +76,7 @@ bash ~/Downloads/Anaconda3-2021.11-Linux-x86_64.sh
 source ~/.bashrc
 
 # Julia
+cd ~/Downloads/
 mkdir ~/Downloads/julia-dist/
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.0-linux-x86_64.tar.gz -P ~/Downloads/julia-dist
 tar -xvzf ~/Downloads/julia-dist/julia-1.7.0-linux-x86_64.tar.gz

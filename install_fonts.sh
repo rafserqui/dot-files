@@ -2,10 +2,6 @@
 
 cd ~
 
-# Hack Nerd Fonts
-git clone https://github.com/ryanoasis/nerd-fonts.git
-./install.sh
-
 # Powerline Fonts
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
