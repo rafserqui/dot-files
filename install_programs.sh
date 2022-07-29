@@ -17,6 +17,9 @@ git clone https://github.com/lighthaus-theme/zathura ~/.config/zathura/
 # Add zathurarc for config 
 cp ~/Downloads/dot-files/zathurarc ~/.config/zathura/
 
+# Make zathura the default pdf reader
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+
 # VS Code
 sudo apt install code -y
 
