@@ -37,7 +37,7 @@ wget https://download1.rstudio.org/desktop/jammy/amd64/rstudio-2022.07.1-554-amd
 sudo apt install ~/Downloads/rstudio-2022.07.1-554-amd64.deb -y
 
 # GNOME Tweaks
-sudo apt install gnome-Tweaks -y
+sudo apt install gnome-tweaks -y
 
 # Kitty Terminal
 sudo apt install kitty
