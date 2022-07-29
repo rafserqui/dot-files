@@ -14,6 +14,9 @@ sudo apt install zathura -y
 # Lighthaus theme
 git clone https://github.com/lighthaus-theme/zathura ~/.config/zathura/
 
+# Add zathurarc for config 
+cp ~/Downloads/dot-files/zathurarc ~/.config/zathura/
+
 # VS Code
 sudo apt install code -y
 
