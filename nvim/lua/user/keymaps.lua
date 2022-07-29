@@ -23,24 +23,30 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Leader Key --
--- An important key that precedes other commands. In this config is mapped to be space
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
--- The following remap is "space e" which uses the command ":Lex 30+Enter"
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
--- The <cr> stands for "carriage return" which is just the Enter key.
--- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
--- The number 30 that follows is the size of the window
-
+-- Tabs --
+keymap("n", "<C-t>", ":tabnew %<cr>", opts)
+keymap("n", "<C-c>", ":tabclose<cr>", opts)
+keymap("n", [[c-\]], ":tabonly<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Leader Key --
+-- An important key that precedes other commands. In this config is mapped to be space
+--Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- The following remap is "space e" which uses the command ":Lex 30+Enter"
+keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- The <cr> stands for "carriage return" which is just the Enter key.
+-- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
+-- The number 30 that follows is the size of the window
+
 
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
@@ -71,17 +77,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts) keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Remap keys to allow for softwrapped navigations
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
--- Send code to the terminal
--- keymap("n", "<leader>tb", "(y)<C-w>wpa<C-l><CR><C-\><C-n><C-w>p)")
--- keymap("n", "<leader>tl", "Vy<C-w>wpa<CR><C-\><C-n><C-w>pj")
--- keymap("n", "<leader>ts", "y<C-w>wpa<CR><C-\><C-n><C-w>p")
-
--- Toggleterm send lines to terminal
-keymap("v", "<leader>ss", ":ToggleTermSendVisualLines <1> <cr>", opts)

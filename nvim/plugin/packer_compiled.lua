@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/julia-vim",
     url = "https://github.com/JuliaEditorSupport/julia-vim"
   },
+  ["kanagawa.nvim"] = {
+    loaded = true,
+    path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -138,11 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
-  ["neovim-ayu"] = {
-    loaded = true,
-    path = "/home/rafserqui/.local/share/nvim/site/pack/packer/start/neovim-ayu",
-    url = "https://github.com/Shatur/neovim-ayu"
   },
   ["nlsp-settings.nvim"] = {
     loaded = true,

@@ -84,7 +84,7 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim"
 
   -- Colorschemes
-  use "Shatur/neovim-ayu"
+  use "rebelot/kanagawa.nvim"
 
   -- Status line
   use "nvim-lualine/lualine.nvim"
