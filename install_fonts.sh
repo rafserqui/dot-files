@@ -15,3 +15,8 @@ rm -rf fonts
 wget https://github.com/be5invis/Iosevka/releases/download/v11.2.3/super-ttc-iosevka-11.2.3.zip
 unzip super-ttc-iosevka-11.2.3.zip
 mv ./super-ttc-iosevka-11.2.3/sgr-iosevka-term.ttc ~/.fonts/
+
+git clone https://github.com/ryanoasis/nerd-fonts.git
+cd ./nerd-fonts
+./install.sh
+
