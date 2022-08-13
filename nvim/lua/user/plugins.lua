@@ -63,10 +63,12 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
 
-  -- Buffer line to see buffers open and a terminal
+  -- Show tabs of buffers open
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
-  use "moll/vim-bbye"
-  use {"akinsho/toggleterm.nvim", tag = "v1.*"}
+
+  -- Buffer line to see buffers open and a terminal
+  -- use "moll/vim-bbye"
+  -- use {"akinsho/toggleterm.nvim", tag = "v1.*"}
 
   -- NvimTree
   use 'kyazdani42/nvim-web-devicons'

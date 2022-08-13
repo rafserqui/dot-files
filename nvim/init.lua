@@ -3,7 +3,6 @@ require "user.keymaps"
 require "user.plugins"
 require "user.colorscheme"
 -- Persist one colorscheme
---vim.cmd "colorscheme ayu-mirage"
 vim.cmd "colorscheme kanagawa"
 require "user.cmp"
 require "user.lsp"
