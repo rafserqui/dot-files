@@ -86,6 +86,9 @@ return packer.startup(function(use)
   -- Colorschemes
   use "rebelot/kanagawa.nvim"
 
+  -- Colorizer
+  use "NvChad/nvim-colorizer.lua"
+
   -- Status line
   use "nvim-lualine/lualine.nvim"
 

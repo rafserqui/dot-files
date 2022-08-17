@@ -2,8 +2,10 @@ require "user.options"
 require "user.keymaps"
 require "user.plugins"
 require "user.colorscheme"
+
+require'colorizer'.setup()
+
 -- Persist one colorscheme
---vim.cmd "colorscheme ayu-mirage"
 vim.cmd "colorscheme kanagawa"
 require "user.cmp"
 require "user.lsp"
