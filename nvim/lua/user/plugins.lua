@@ -76,21 +76,34 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" --snippet engine
   use "honza/vim-snippets"
 
-	-- Auto pairs and surround for "(" "[" "{" etc.
+	-- Auto pairs
 	use "windwp/nvim-autopairs"
 	use "tpope/vim-repeat"
+
+  -- Surround with brackets
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
 
   -- Comments
   use "numToStr/Comment.nvim"
 
   -- Colorschemes
   use "rebelot/kanagawa.nvim"
+  use 'rmehri01/onenord.nvim'
 
   -- Colorizer
   use "NvChad/nvim-colorizer.lua"
 
   -- Status line
   use "nvim-lualine/lualine.nvim"
+
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP

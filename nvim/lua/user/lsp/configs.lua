@@ -6,7 +6,7 @@ end
 local lspconfig = require("lspconfig")
 
 local servers = { "jsonls", "sumneko_lua", "pyright",
-                    "julials", "texlab", "r_language_server"}
+                    "texlab", "r_language_server"}
 
 lsp_installer.setup {
 	ensure_installed = servers
@@ -23,3 +23,5 @@ for _, server in pairs(servers) do
 	end
 	lspconfig[server].setup(opts)
 end
+
+require'lspconfig'.julials.setup{}

@@ -79,6 +79,9 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 -- Telescope
 keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts) keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
+-- Find text
+keymap("n", "<leader>tt", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts) keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+
 -- Remap keys to allow for softwrapped navigations
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)

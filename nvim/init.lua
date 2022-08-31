@@ -6,7 +6,8 @@ require "user.colorscheme"
 require'colorizer'.setup()
 
 -- Persist one colorscheme
-vim.cmd "colorscheme kanagawa"
+vim.cmd "colorscheme onenord" -- kanagawa if darker
+
 require "user.cmp"
 require "user.lsp"
 require "user.telescope"
@@ -21,3 +22,4 @@ require "user.lualine"
 require "user.autocommands"
 require "user.markdown-preview"
 require "user.nvim-r"
+

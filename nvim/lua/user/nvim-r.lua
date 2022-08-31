@@ -1,3 +1,12 @@
-vim['R_nvim_wd'] = 0
-vim['R_assign'] = 0
+M = {}
+local status_ok, nvimr = pcall(require, "nvim-r")
+if not status_ok then
+	return
+end
 
+nvimr.setup({
+  options = {
+    R_assign_map = 0,
+    R_nvim_wd = 0
+  }
+})
