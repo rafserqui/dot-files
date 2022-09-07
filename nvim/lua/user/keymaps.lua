@@ -85,7 +85,7 @@ keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
 -- Map keys for Gitsigns
-keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>")
-keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>")
-keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>")
+keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
+keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", opts)
 
