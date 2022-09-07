@@ -26,10 +26,14 @@ local diff = {
 }
 
 local mode = {
-	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
+  -- mode component
+  "mode",
+  fmt = function(str)
+    -- return "▊"
+    return "  " .. str .. " "
+    -- return "  "
+  end,
+  padding = 0,
 }
 
 local filetype = {

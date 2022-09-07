@@ -77,12 +77,15 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts) keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-
--- Find text
-keymap("n", "<leader>tt", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts) keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>t", ":Telescope live_grep<CR>", opts)
 
 -- Remap keys to allow for softwrapped navigations
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
+
+-- Map keys for Gitsigns
+keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>")
+keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>")
+keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>")
 

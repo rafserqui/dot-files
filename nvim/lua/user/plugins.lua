@@ -51,8 +51,14 @@ return packer.startup(function(use)
   -- Useful lua functions used by lots of plugins
   use "nvim-lua/plenary.nvim"
 
-	--Latex plugin for compilation and more
-	use "lervag/vimtex"
+  -- LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json
+  use "jose-elias-alvarez/null-ls.nvim" -- formatters and linters
+  use "ray-x/lsp_signature.nvim" -- Show function signature
+  use "RRethy/vim-illuminate"
 
 	--Autocompletion with nvim-cmp
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -63,22 +69,22 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
 
-  -- Buffer line to see buffers open and a terminal
-  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
-  use "moll/vim-bbye"
-  use {"akinsho/toggleterm.nvim", tag = "v1.*"}
-
-  -- NvimTree
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
-
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "honza/vim-snippets"
 
-	-- Auto pairs
-	use "windwp/nvim-autopairs"
-	use "tpope/vim-repeat"
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use "p00f/nvim-ts-rainbow"
+  use "nvim-treesitter/playground"
+  use "windwp/nvim-ts-autotag"
+
+  -- NvimTree
+  use 'kyazdani42/nvim-tree.lua'
 
   -- Surround with brackets
   use({
@@ -91,49 +97,58 @@ return packer.startup(function(use)
       end
   })
 
-  -- Comments
-  use "numToStr/Comment.nvim"
+  -- Telescope ==> Fuzzy finder
+  use "nvim-telescope/telescope.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
 
   -- Colorschemes
-  use "rebelot/kanagawa.nvim"
+--  use "rebelot/kanagawa.nvim"
   use 'rmehri01/onenord.nvim'
 
   -- Colorizer
   use "NvChad/nvim-colorizer.lua"
 
+  -- Icon
+  use "kyazdani42/nvim-web-devicons"
+
   -- Status line
   use "nvim-lualine/lualine.nvim"
 
-
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json
-  use "jose-elias-alvarez/null-ls.nvim" -- formatters and linters
-
-  -- Telescope ==> Fuzzy finder
-  use "nvim-telescope/telescope.nvim"
-
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "p00f/nvim-ts-rainbow"
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  -- Bufferline
+  use "akinsho/bufferline.nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
 
-  -- Julia Support
-  use "JuliaEditorSupport/julia-vim"
-  use "jpalardy/vim-slime"
+	-- Auto pairs
+	use "windwp/nvim-autopairs"
+	use "tpope/vim-repeat"
 
-  -- R Support
+  -- Comments
+  use "numToStr/Comment.nvim"
+  use "lvimuser/lsp-inlayhints.nvim"
+
+  -- Startup
+  use "goolord/alpha-nvim"
+
+	--Latex 
+	use "lervag/vimtex"
+
+  -- Julia
+  -- use "JuliaEditorSupport/julia-vim"
+
+  -- R
   use {"jalvesaq/Nvim-R", branch = "stable" }
 
   -- Markdown support for preview
-  use "iamcco/markdown-preview.nvim"
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+  }
+
+  -- Utilities
+  use "lewis6991/impatient.nvim" -- Improve startup time for neovim
 
   -- Automatically set up your configuration after cloning pacer.nvim
   -- Put this at the end after all plugins
