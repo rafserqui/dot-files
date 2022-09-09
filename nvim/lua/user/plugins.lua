@@ -103,7 +103,8 @@ return packer.startup(function(use)
 
   -- Colorschemes
 --  use "rebelot/kanagawa.nvim"
-  use 'rmehri01/onenord.nvim'
+--  use 'rmehri01/onenord.nvim'
+  use "aymenhafeez/neodark.nvim"
 
   -- Colorizer
   use "NvChad/nvim-colorizer.lua"
@@ -149,6 +150,9 @@ return packer.startup(function(use)
 
   -- Utilities
   use "lewis6991/impatient.nvim" -- Improve startup time for neovim
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end}
 
   -- Automatically set up your configuration after cloning pacer.nvim
   -- Put this at the end after all plugins

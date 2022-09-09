@@ -1,92 +1,49 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
+local present, bufferline = pcall(require, "bufferline")
+if not present then
   return
 end
 
+local colors = require("user.colors")
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
+keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
+keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
+keymap("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", opts)
+keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
+keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
+keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
+
 bufferline.setup {
   options = {
-    close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-    right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
     offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-    separator_style = "thick", -- | "thick" | "thin" | { 'any', 'any' },
+    show_buffer_close_icons = false,
+    show_tab_indicators = true,
+    enforce_regular_tabs = true,
+    max_name_length = 30,
+    max_prefix_length = 30,
+    tab_size = 21,
+    separator_style = "thin",
+    buffer_close_icon = "",
+    modified_icon = "●",
+    close_icon = "",
+    show_close_icon = false,
+    left_trunc_marker = "",
+    right_trunc_marker = "",
+    indicator = {
+      icon = "▎",
+      style = "icon"
+    }
   },
   highlights = {
-    fill = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
     background = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = colors.grey_fg,
+      bg = colors.black4,
     },
-
     buffer_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-
-    close_button = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-    close_button_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-
-    tab_selected = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-    tab = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-    tab_close = {
-      fg = { attribute = "fg", highlight = "TabLineSel" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-
-    duplicate_selected = {
-      fg = { attribute = "fg", highlight = "TabLineSel" },
-      bg = { attribute = "bg", highlight = "TabLineSel" },
-      italic = true,
-    },
-    duplicate_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-      italic = true,
-    },
-    duplicate = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-      italic = true,
-    },
-
-    modified = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-    modified_selected = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-    modified_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-
-    separator = {
-      fg = { attribute = "bg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-    separator_selected = {
-      fg = { attribute = "bg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-    indicator_selected = {
-      fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-      bg = { attribute = "bg", highlight = "Normal" },
+      fg = colors.light_grey,
+      bg = colors.black4,
     },
   },
 }
