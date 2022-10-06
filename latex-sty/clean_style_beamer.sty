@@ -1,0 +1,224 @@
+% Add space in lists
+\let\toneitemize\itemize
+\let\ttwoitemize\enditemize
+\renewenvironment{itemize}{\toneitemize\addtolength{\itemsep}{1.35\baselineskip}}{\ttwoitemize}
+
+\let\toneenumer\enumerate
+\let\ttwoenumer\endenumerate
+\renewenvironment{enumerate}{\toneenumer\addtolength{\itemsep}{1.35\baselineskip}}{\ttwoenumer}
+
+% Itemize w bullets
+\setbeamertemplate{itemize items}{$\circ$}
+
+% Font size of title
+\setbeamerfont{title}{size=\huge}
+
+%===========================================================
+% Color specifications
+%===========================================================
+\definecolor{LightBlue}{HTML}{0494e7}  % Headings color
+\definecolor{CitationsBlue}{HTML}{2B6684} 	% Color for citations
+\definecolor{LinksPink}{HTML}{ff0054}       % Color for links
+
+% Template for syntax highlighting
+\definecolor{BeigeBackground}{HTML}{fdf6e3}
+\definecolor{BlueKeyWord}{HTML}{268bd2}
+
+\setbeamercolor{palette primary}{bg=LightBlue,fg=white}
+\setbeamercolor{palette secondary}{bg=LightBlue,fg=white}
+\setbeamercolor{palette tertiary}{bg=LightBlue,fg=white}
+\setbeamercolor{palette quaternary}{bg=LightBlue,fg=white}
+\setbeamercolor{structure}{fg=LightBlue} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=LightBlue} % TOC sections
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{button}{bg=white, fg=LightBlue}
+\setbeamercolor{alerted text}{fg=LightBlue}
+
+%===========================================================
+% Numeration in environments
+%===========================================================
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{definitions}[numbered]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+
+\usepackage{appendixnumberbeamer}
+
+%===========================================================
+% Language and font settings
+%===========================================================
+\usepackage[english,activeacute]{babel} % Language
+\usefonttheme{professionalfonts}		% Avoid overwriting fonts
+
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage[utf8]{inputenc}				% Special symbols
+\usepackage[T1]{fontenc}				% T1 Encoding of font
+\usepackage{csquotes}
+
+%===========================================================
+% Math font settings
+%===========================================================
+\usepackage{mathpazo}					% Math font
+\usepackage{amsmath,amsfonts,amssymb}	% Math symbols
+\usepackage{dsfont}						% Math symbols like R for reals...
+
+%===========================================================
+% References' colors and PDF properties
+%===========================================================
+\usepackage{hyperref}
+\hypersetup
+{
+    pdfauthor={Rafael Serrano Quintero},
+    pdfsubject={Introduction to Matlab},
+    colorlinks = {true},
+    linkcolor = {LightBlue},
+    citecolor = {LinksPink},
+    urlcolor = {LinksPink},
+    filecolor = {LinksPink}
+}
+%===========================================================
+% Additional packages
+%===========================================================
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{longtable}
+\usepackage{appendix}
+\usepackage{marvosym}
+\usepackage{enumerate} %For enumerating with letters with option [a)]
+\usepackage{epstopdf}
+
+\usepackage[style = authoryear]{biblatex}
+\newcommand{\mkbibbracketscol}[1]{\textcolor{LinksPink}{\mkbibbrackets{#1}}}
+
+%\DeclareCiteCommand{\cite}[\mkbibbracketscol]
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \usebibmacro{cite}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibbracketscol]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+
+\usepackage[flushleft]{threeparttable}
+\usepackage{booktabs}
+\usepackage[super]{nth}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+
+%========================================================================================
+% Syntax highlighting for Matlab
+%========================================================================================
+\usepackage{fancyvrb}  %To reduce font size in verbatim environment
+\usepackage{listings}
+
+
+\lstloadlanguages{Matlab}%
+\lstdefinestyle{MyMatlabStyle}{
+    language=Matlab,
+    backgroundcolor=\color{BeigeBackground}, 
+    breaklines=true,                 
+    captionpos=b,                    
+    commentstyle=\color{gray},   
+    frame=none,
+    keywordstyle=[1]\color{BlueKeyWord}\bfseries, % MATLAB functions bold and blue
+    keywordstyle=[2]\color{Purple},  % MATLAB function arguments purple
+    keywordstyle=[3]\color{Purple}\underbar,  % User functions underlined and blue      
+    stringstyle=\color{Purple},   
+    morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf,ones},
+    %Put MATLAB function parameters here
+    morekeywords=[2]{all, on, off, interp},
+    morecomment=[s]{\%\{}{\%\}},
+    numbers=left,                    
+    numbersep=3pt,                   
+    numberstyle=\tiny\color{black},
+    rulecolor=\color{black},        
+    showspaces=false,               
+    showstringspaces=false,          
+    showtabs=false,                  
+    stepnumber=1,                    
+    tabsize=2         
+}
+\lstset{style=MyMatlabStyle, basicstyle=\small\ttfamily}
+
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\makeatletter
+    \ifbeamer@countsect
+      \newtheorem{theorem}{\translate{Theorem}}[section]
+    \else
+      \newtheorem{theorem}{\translate{Theorem}}
+    \fi
+    \newtheorem{corollary}{\translate{Corollary}}
+    \newtheorem{fact}{\translate{Fact}}
+    \newtheorem{lemma}{\translate{Lemma}}
+    \newtheorem{problem}{\translate{Problem}}
+    \newtheorem{solution}{\translate{Solution}}
+
+    \theoremstyle{definition}
+    \newtheorem{definition}{\translate{Definition}}
+    \newtheorem{definitions}{\translate{Definitions}}
+
+    \theoremstyle{example}
+    \newtheorem{example}{\translate{Example}}
+    \newtheorem{examples}{\translate{Examples}}
+    \newtheorem{exercise}{Exercise}
+
+    % Compatibility
+    \newtheorem{Beispiel}{Beispiel}
+    \newtheorem{Beispiele}{Beispiele}
+    \theoremstyle{plain}
+    \newtheorem{Loesung}{L\"osung}
+    \newtheorem{Satz}{Satz}
+    \newtheorem{Folgerung}{Folgerung}
+    \newtheorem{Fakt}{Fakt}
+    \newenvironment{Beweis}{\begin{proof}[Beweis.]}{\end{proof}}
+    \newenvironment{Lemma}{\begin{lemma}}{\end{lemma}}
+    \newenvironment{Proof}{\begin{proof}}{\end{proof}}
+    \newenvironment{Theorem}{\begin{theorem}}{\end{theorem}}
+    \newenvironment{Problem}{\begin{problem}}{\end{problem}}
+    \newenvironment{Corollary}{\begin{corollary}}{\end{corollary}}
+    \newenvironment{Example}{\begin{example}}{\end{example}}
+    \newenvironment{Examples}{\begin{examples}}{\end{examples}}
+    \newenvironment{Definition}{\begin{definition}}{\end{definition}}
+\makeatother
+
+
+% Section styling
+\AtBeginSection[]{\frame{\sectionpage}}
+\AtBeginSubsection[]{\frame{\subsectionpage}}
+
+\defbeamertemplate{section page}{mine}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{section name}\usebeamercolor[fg]{section name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+\defbeamertemplate{subsection page}{mine_sub}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{subsection name}\usebeamercolor[fg]{subsection name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{subsection title}\insertsubsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+\setbeamertemplate{section page}[mine]
+\setbeamertemplate{subsection page}[mine_sub]
+
+
