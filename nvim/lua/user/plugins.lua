@@ -105,7 +105,16 @@ return packer.startup(function(use)
 --  use "rebelot/kanagawa.nvim"
 --  use 'rmehri01/onenord.nvim'
   use "aymenhafeez/neodark.nvim"
-
+  use "lunarvim/horizon.nvim"
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
+      require("catppuccin").setup()
+      vim.api.nvim_command "colorscheme catppuccin"
+    end
+  }
   -- Colorizer
   use "NvChad/nvim-colorizer.lua"
 
