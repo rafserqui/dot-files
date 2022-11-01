@@ -145,7 +145,7 @@ return packer.startup(function(use)
 	use "lervag/vimtex"
 
   -- Julia
-  -- use "JuliaEditorSupport/julia-vim"
+  use "JuliaEditorSupport/julia-vim"
 
   -- R
   use {"jalvesaq/Nvim-R", branch = "stable" }
