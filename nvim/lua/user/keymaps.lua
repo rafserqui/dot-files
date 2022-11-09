@@ -89,5 +89,3 @@ keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
 keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", opts)
 
--- Map for bibtex align and sort
---keymap("n", "<leader>ba", ":!bibtex-tidy --align --space=4 --duplicates --merge=combine %:p<CR>", opts)
