@@ -109,11 +109,6 @@ return packer.startup(function(use)
   use {
     "catppuccin/nvim",
     as = "catppuccin",
-    config = function()
-      vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
-      require("catppuccin").setup()
-      vim.api.nvim_command "colorscheme catppuccin"
-    end
   }
   -- Colorizer
   use "NvChad/nvim-colorizer.lua"
