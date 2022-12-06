@@ -104,12 +104,14 @@ return packer.startup(function(use)
   -- Colorschemes
 --  use "rebelot/kanagawa.nvim"
 --  use 'rmehri01/onenord.nvim'
-  use "aymenhafeez/neodark.nvim"
-  use "lunarvim/horizon.nvim"
-  use {
-    "catppuccin/nvim",
-    as = "catppuccin",
-  }
+  -- use "aymenhafeez/neodark.nvim"
+  -- use "lunarvim/horizon.nvim"
+  -- use {
+  --   "catppuccin/nvim",
+  --   as = "catppuccin",
+  -- }
+  use 'folke/tokyonight.nvim'
+
   -- Colorizer
   use "NvChad/nvim-colorizer.lua"
 
@@ -137,7 +139,7 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
 
 	--Latex 
-	use "lervag/vimtex"
+  use "lervag/vimtex"
 
   -- Julia
   -- use "JuliaEditorSupport/julia-vim"

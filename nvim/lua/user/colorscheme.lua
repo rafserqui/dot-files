@@ -1,8 +1,5 @@
---local colorscheme = "neodark"
---local colorscheme = "onenord"
---local colorscheme = "darkplus"
---local colorscheme = "horizon"
-local colorscheme = "catppuccin-frappe"
+--local colorscheme = "catppuccin-frappe"
+local colorscheme = "tokyonight-storm"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

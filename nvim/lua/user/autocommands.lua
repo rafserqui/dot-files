@@ -24,6 +24,10 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+  augroup custom_term
+    autocmd!
+    autocmd TermOpen * setlocal bufhidden=hide
+  autogroup end
 ]]
 
 -- Autoformat
