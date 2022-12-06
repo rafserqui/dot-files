@@ -27,7 +27,7 @@ vim.cmd [[
   augroup custom_term
     autocmd!
     autocmd TermOpen * setlocal bufhidden=hide
-  autogroup end
+  augroup end
 ]]
 
 -- Autoformat
