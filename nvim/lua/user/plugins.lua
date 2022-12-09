@@ -52,9 +52,9 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim"
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
+  use "neovim/nvim-lspconfig" -- enable LSP
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json
   use "jose-elias-alvarez/null-ls.nvim" -- formatters and linters
   use "ray-x/lsp_signature.nvim" -- Show function signature
@@ -105,11 +105,6 @@ return packer.startup(function(use)
 --  use "rebelot/kanagawa.nvim"
 --  use 'rmehri01/onenord.nvim'
   -- use "aymenhafeez/neodark.nvim"
-  -- use "lunarvim/horizon.nvim"
-  -- use {
-  --   "catppuccin/nvim",
-  --   as = "catppuccin",
-  -- }
   use 'folke/tokyonight.nvim'
 
   -- Colorizer
@@ -142,7 +137,10 @@ return packer.startup(function(use)
   use "lervag/vimtex"
 
   -- Julia
-  -- use "JuliaEditorSupport/julia-vim"
+  use "JuliaEditorSupport/julia-vim"
+
+  -- For Julia REPL
+  use "axvr/zepl.vim"
 
   -- R
   use {"jalvesaq/Nvim-R", branch = "stable" }
@@ -156,9 +154,10 @@ return packer.startup(function(use)
 
   -- Utilities
   use "lewis6991/impatient.nvim" -- Improve startup time for neovim
-  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-    require("toggleterm").setup()
-  end}
+  use "akinsho/toggleterm.nvim"
+
+  -- Trouble
+  use "folke/trouble.nvim"
 
   -- Automatically set up your configuration after cloning pacer.nvim
   -- Put this at the end after all plugins
