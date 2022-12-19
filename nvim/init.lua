@@ -19,4 +19,6 @@ require("user.nvim-r")
 require("user.telescope")
 require("user.treesitter")
 require("user.toggleterm")
+require("user.markdownprev")
+require("user.fugitive")
 
