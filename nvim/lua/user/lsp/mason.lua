@@ -9,7 +9,7 @@ if not status_ok_1 then
 end
 
 local servers = {
-  "sumneko_lua",
+  "lua_ls",
   "jdtls",
   "pyright",
   "julials",
@@ -48,7 +48,7 @@ for _, server in pairs(servers) do
 end
 
 -- Lua 
-lspconfig.sumneko_lua.setup{
+lspconfig.lua_ls.setup{
   settings = {
     Lua = {
       diagnostics = { globals = { 'vim' } }

@@ -21,4 +21,5 @@ require("user.treesitter")
 require("user.toggleterm")
 require("user.markdownprev")
 require("user.fugitive")
+require("user.indentline")
 

@@ -16,20 +16,15 @@ nvim_tree.setup {
   hijack_directories = {
     enable = false,
   },
-  ignore_ft_on_setup = {
-    "startify",
-    "dashboard",
-    "alpha",
-  },
   filters = {
     custom = { ".git" },
-    exclude = { ".gitignore" },
+    exclude = { ".gitignore" }
   },
   update_cwd = true,
   renderer = {
     add_trailing = false,
     group_empty = false,
-    highlight_git = false,
+    highlight_git = true,
     highlight_opened_files = "none",
     root_folder_modifier = ":t",
     indent_markers = {
@@ -92,7 +87,7 @@ nvim_tree.setup {
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     timeout = 500,
   },
   view = {

@@ -16,35 +16,35 @@ keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
 
 bufferline.setup {
-  options = {
-    offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-    show_buffer_close_icons = false,
-    show_tab_indicators = true,
-    enforce_regular_tabs = true,
-    max_name_length = 30,
-    max_prefix_length = 30,
-    tab_size = 21,
-    separator_style = "thin",
-    buffer_close_icon = "",
-    modified_icon = "●",
-    close_icon = "",
-    show_close_icon = false,
-    left_trunc_marker = "",
-    right_trunc_marker = "",
-    indicator = {
-      icon = "▎",
-      style = "icon"
-    }
-  },
-  highlights = {
-    background = {
-      fg = colors.grey_fg,
-      bg = colors.black4,
+    options = {
+        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+        show_buffer_close_icons = false,
+        show_tab_indicators = true,
+        enforce_regular_tabs = true,
+        max_name_length = 30,
+        max_prefix_length = 30,
+        tab_size = 21,
+        separator_style = "thin",
+        buffer_close_icon = "",
+        modified_icon = "●",
+        close_icon = "",
+        show_close_icon = false,
+        left_trunc_marker = "",
+        right_trunc_marker = "",
+        indicator = {
+            icon = "▎",
+            style = "icon"
+        }
     },
-    buffer_visible = {
-      fg = colors.light_grey,
-      bg = colors.black4,
+    highlights = {
+        background = {
+            fg = colors.grey_fg,
+            bg = colors.black4,
+        },
+        buffer_visible = {
+            fg = colors.light_grey,
+            bg = colors.black4,
+        },
     },
-  },
 }
 

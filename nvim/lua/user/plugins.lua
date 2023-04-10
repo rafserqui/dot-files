@@ -103,6 +103,9 @@ return packer.startup(function(use)
   -- Colorschemes
   use 'folke/tokyonight.nvim'
 
+  -- Show indent lines
+  use 'lukas-reineke/indent-blankline.nvim'
+
   -- Colorizer
   use 'NvChad/nvim-colorizer.lua'
 

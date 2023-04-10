@@ -23,7 +23,7 @@ dashboard.section.header.val = {
     "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
     "                                                     ",}
 dashboard.section.buttons.val = {
-  button("f", icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),
+  button("f", icons.documents.Files .. " Find file", ":Telescope find_files ignore=true<CR>"),
   button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
   button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
   button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),

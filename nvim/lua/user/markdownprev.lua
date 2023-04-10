@@ -1,5 +1,5 @@
 M = {}
-local status_ok, mdprev = pcall(require, "markdown-preview.nvim")
+local status_ok, _ = pcall(require, "markdown-preview.nvim")
 if not status_ok then
 	return
 end

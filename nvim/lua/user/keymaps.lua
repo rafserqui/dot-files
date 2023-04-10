@@ -77,8 +77,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>f", ":Telescope find_files hidden=true<CR>", opts)
-keymap("n", "<leader>t", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files ignore=false<CR>", opts)
+keymap("n", "<leader>tt", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
+keymap("n", "<leader>bb", ":Telescope buffers<CR>", opts)
 
 -- Remap keys to allow for softwrapped navigations
 keymap("n", "j", "gj", opts)
