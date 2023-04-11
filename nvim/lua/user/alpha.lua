@@ -1,14 +1,14 @@
 local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
-  return
+    return
 end
 
 local dashboard = require "alpha.themes.dashboard"
 
 local function button(sc, txt, keybind, keybind_opts)
-  local b = dashboard.button(sc, txt, keybind, keybind_opts)
-  b.opts.hl_shortcut = "Macro"
-  return b
+    local b = dashboard.button(sc, txt, keybind, keybind_opts)
+    b.opts.hl_shortcut = "Macro"
+    return b
 end
 
 local icons = require "user.icons"
@@ -23,21 +23,21 @@ dashboard.section.header.val = {
     "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
     "                                                     ",}
 dashboard.section.buttons.val = {
-  button("f", icons.documents.Files .. " Find file", ":Telescope find_files ignore=true<CR>"),
-  button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-  button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
-  button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-  button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
-  button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
-  button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
+    button("f", icons.documents.Files .. " Find file", ":Telescope find_files ignore=true<CR>"),
+    button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
+    button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
+    button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
+    button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
+    button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
+    button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
 }
 local function footer()
-  -- NOTE: requires the fortune-mod package to work
-  -- local handle = io.popen("fortune")
-  -- local fortune = handle:read("*a")
-  -- handle:close()
-  -- return fortune
-  return ""
+    -- NOTE: requires the fortune-mod package to work
+    -- local handle = io.popen("fortune")
+    -- local fortune = handle:read("*a")
+    -- handle:close()
+    -- return fortune
+    return ""
 end
 
 dashboard.section.footer.val = footer()
