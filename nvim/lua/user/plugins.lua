@@ -54,18 +54,18 @@ return packer.startup(function(use)
     -- LSP
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
-    use 'neovim/nvim-lspconfig' -- enable LSP
-    use 'tamago324/nlsp-settings.nvim' -- language server settings defined in json
-    use 'jose-elias-alvarez/null-ls.nvim' -- formatters and linters
-    use 'ray-x/lsp_signature.nvim' -- Show function signature
+    use 'neovim/nvim-lspconfig'             -- enable LSP
+    use 'tamago324/nlsp-settings.nvim'      -- language server settings defined in json
+    use 'jose-elias-alvarez/null-ls.nvim'   -- formatters and linters
+    use 'ray-x/lsp_signature.nvim'          -- Show function signature
     use 'RRethy/vim-illuminate'
 
     --Autocompletion with nvim-cmp
-    use 'hrsh7th/nvim-cmp' -- The completion plugin
-    use 'hrsh7th/cmp-buffer' -- buffer completions
-    use 'hrsh7th/cmp-path' -- path completions
-    use 'hrsh7th/cmp-cmdline' -- cmdline completions
-    use 'saadparwaiz1/cmp_luasnip' -- snippet completions
+    use 'hrsh7th/nvim-cmp'          -- The completion plugin
+    use 'hrsh7th/cmp-buffer'        -- buffer completions
+    use 'hrsh7th/cmp-path'          -- path completions
+    use 'hrsh7th/cmp-cmdline'       -- cmdline completions
+    use 'saadparwaiz1/cmp_luasnip'  -- snippet completions
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lua'
 
@@ -143,7 +143,24 @@ return packer.startup(function(use)
 
     -- R
     use {'jalvesaq/Nvim-R', branch = 'stable' }
-    
+
+    -- Quarto
+    use { 'quarto-dev/quarto-nvim' }
+    use { 'quarto-dev/quarto-vim',
+        ft = 'quarto',
+        requires = {
+            'vim-pandoc/vim-pandoc-syntax',
+        },
+    }
+    use { 'jmbuhr/otter.nvim',
+        config = function()
+            require 'otter.config'.setup {
+                lsp = {
+                    hover = { border = "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+                }
+            }
+        end,
+    }
     -- Markdown support for preview
     use {
         'iamcco/markdown-preview.nvim',
