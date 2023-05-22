@@ -22,4 +22,5 @@ require("user.toggleterm")
 require("user.markdownprev")
 require("user.fugitive")
 require("user.indentline")
+require("user.trouble")
 

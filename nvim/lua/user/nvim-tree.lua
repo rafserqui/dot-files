@@ -76,7 +76,7 @@ local function on_attach(bufnr)
 
 
     -- Mappings migrated from view.mappings.list
-    vim.keymap.set('n', 'l', api.node.open.preview, opts('Open Preview'))
+    vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Preview'))

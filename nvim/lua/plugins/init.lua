@@ -23,6 +23,14 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
 
+    -- Use TabNine
+    {
+        "tzachar/cmp-tabnine",
+        event = "BufRead",
+        build = "./install.sh",
+        dependencies = 'hrsh7th/nvim-cmp',
+    },
+
     -- snippets
     'L3MON4D3/LuaSnip', --snippet engine
     'honza/vim-snippets',
@@ -37,12 +45,10 @@ return {
     'nvim-treesitter/playground',
 
     -- NvimTree (File Explorer)
+    "nvim-tree/nvim-web-devicons",
     {
         'kyazdani42/nvim-tree.lua',
         version = "*",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
     },
 
     -- Surround with brackets
@@ -61,6 +67,7 @@ return {
 
     -- Colorschemes
     'folke/tokyonight.nvim',
+    'sainnhe/gruvbox-material',
 
     -- Show indent lines
     'lukas-reineke/indent-blankline.nvim',

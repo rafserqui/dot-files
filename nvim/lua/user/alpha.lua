@@ -28,7 +28,7 @@ dashboard.section.buttons.val = {
     button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
     button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
     button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
-    button("u", icons.ui.CloudDownload .. " Update", ":Lazy<CR>"),
+    button("u", icons.ui.CloudDownload .. " Lazy", ":Lazy<CR>"),
     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
 }
 local function footer()
@@ -44,3 +44,12 @@ dashboard.section.footer.opts.hl = "Type"
 dashboard.opts.opts.noautocmd = true
 -- vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)
+vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyVimStarted",
+    callback = function()
+        local stats = require("lazy").stats()
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+        pcall(vim.cmd.AlphaRedraw)
+    end,
+})

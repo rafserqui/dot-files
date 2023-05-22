@@ -27,7 +27,7 @@ bufferline.setup {
         separator_style = "thin",
         buffer_close_icon = "",
         modified_icon = "●",
-        close_icon = "",
+        close_icon = "",
         show_close_icon = false,
         left_trunc_marker = "",
         right_trunc_marker = "",

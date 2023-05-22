@@ -91,5 +91,5 @@ keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
 keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", opts)
 
--- Map change word to a keymap
+-- Quarto Preview
 keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
