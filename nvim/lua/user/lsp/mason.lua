@@ -18,6 +18,7 @@ local servers = {
     "texlab",
     "r_language_server",
     "marksman",
+    "matlab_ls",
     "tsserver",
 }
 
@@ -147,3 +148,6 @@ lspconfig.cssls.setup {
 
 -- Typst
 lspconfig.typst_lsp.setup{ filetypes = { "typst", "sql" } }
+
+-- Matlab
+lspconfig.matlab_ls.setup{ single_file_support = true }

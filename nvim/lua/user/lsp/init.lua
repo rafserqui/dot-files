@@ -28,7 +28,7 @@ end
 require "user.lsp.lsp-signature"
 require "user.lsp.mason"
 require("user.lsp.handlers").setup()
-require "user.lsp.null-ls"
+--require "user.lsp.null-ls"
 
 local status_ok_lsp, _ = pcall(require, "lspconfig")
 if not status_ok_lsp then

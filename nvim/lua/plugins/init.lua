@@ -1,27 +1,44 @@
 return {
-    -- An implementation of the Popup API from vim in Neovim
-    'nvim-lua/popup.nvim',
-
-    -- Useful lua functions used by lots of plugins
-    'nvim-lua/plenary.nvim',
-
     -- LSP
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig',             -- enable LSP
-    'tamago324/nlsp-settings.nvim',      -- language server settings defined in json
-    'jose-elias-alvarez/null-ls.nvim',   -- formatters and linters
-    'ray-x/lsp_signature.nvim',          -- Show function signature
-    'RRethy/vim-illuminate',
+     {
+         'neovim/nvim-lspconfig',
+         dependencies = {
+             -- Automatically install LSPs to stdpath for neovim
+             { 'williamboman/mason.nvim', config = true },
+             'williamboman/mason-lspconfig.nvim',
+
+             -- Useful status updates for LSP
+             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+
+             -- Additional lua configuration, makes nvim stuff amazing!
+             'folke/neodev.nvim',
+         },
+     },
 
     --Autocompletion with nvim-cmp
-    'hrsh7th/nvim-cmp',          -- The completion plugin
-    'hrsh7th/cmp-buffer',        -- buffer completions
-    'hrsh7th/cmp-path',          -- path completions
-    'hrsh7th/cmp-cmdline',       -- cmdline completions
-    'saadparwaiz1/cmp_luasnip',  -- snippet completions
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lua',
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            -- Snippet Engine & its associated nvim-cmp source
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+
+            -- Adds LSP completion capabilities
+            'hrsh7th/cmp-nvim-lsp',
+
+            -- Adds a number of user-friendly snippets
+            'rafamadriz/friendly-snippets',
+        },
+    },
+
+--    'hrsh7th/nvim-cmp',          -- The completion plugin
+--    'hrsh7th/cmp-buffer',        -- buffer completions
+--    'hrsh7th/cmp-path',          -- path completions
+--    'hrsh7th/cmp-cmdline',       -- cmdline completions
+--    'saadparwaiz1/cmp_luasnip',  -- snippet completions
+--    'hrsh7th/cmp-nvim-lsp',
+--    'hrsh7th/cmp-nvim-lua',
 
     -- Use TabNine
     {
@@ -38,11 +55,11 @@ return {
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
         build = ':TSUpdate',
     },
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    'p00f/nvim-ts-rainbow',
-    'nvim-treesitter/playground',
 
     -- NvimTree (File Explorer)
     "nvim-tree/nvim-web-devicons",
@@ -62,7 +79,26 @@ return {
     },
 
     -- Telescope ==> Fuzzy finder
-    'nvim-telescope/telescope.nvim',
+    {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+            -- Only load if `make` is available. Make sure you have the system
+            -- requirements installed.
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                -- NOTE: If you are having trouble with this installation,
+                --       refer to the README for telescope-fzf-native for more instructions.
+                build = 'make',
+                cond = function()
+                    return vim.fn.executable 'make' == 1
+                end,
+            },
+        },
+    },
+
     'nvim-telescope/telescope-media-files.nvim',
 
     -- Colorschemes
@@ -90,7 +126,6 @@ return {
 
     -- Comments
     'numToStr/Comment.nvim',
-    'lvimuser/lsp-inlayhints.nvim',
 
     -- Startup
     'goolord/alpha-nvim',
@@ -119,7 +154,7 @@ return {
     },
     { 'jmbuhr/otter.nvim',
         config = function()
-            require 'otter.config'.setup {
+            require 'otter'.setup {
                 lsp = {
                     hover = { border = "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
                 }
