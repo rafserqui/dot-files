@@ -1,9 +1,8 @@
-local present, bufferline = pcall(require, "bufferline")
-if not present then
-  return
+local status_ok, bufferline= pcall(require, "bufferline")
+if not status_ok then
+    return
 end
 
-local colors = require("user.colors")
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
@@ -15,15 +14,13 @@ keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
 keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
 
-bufferline.setup {
+bufferline.setup{
     options = {
-        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
         show_buffer_close_icons = false,
         show_tab_indicators = true,
         enforce_regular_tabs = true,
         max_name_length = 30,
         max_prefix_length = 30,
-        tab_size = 21,
         separator_style = "thin",
         buffer_close_icon = "",
         modified_icon = "●",
@@ -36,15 +33,4 @@ bufferline.setup {
             style = "icon"
         }
     },
-    highlights = {
-        background = {
-            fg = colors.grey_fg,
-            bg = colors.black4,
-        },
-        buffer_visible = {
-            fg = colors.light_grey,
-            bg = colors.black4,
-        },
-    },
 }
-

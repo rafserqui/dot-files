@@ -5,6 +5,9 @@ end
 
 local actions = require "telescope.actions"
 
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
+
 telescope.setup {
     defaults = {
         prompt_prefix = " ",
@@ -59,45 +62,6 @@ telescope.setup {
                 ["<PageDown>"] = actions.results_scrolling_down,
                 ["?"] = actions.which_key,
             },
-        },
-    },
-    pickers = {
-        live_grep = {
-            theme = "dropdown",
-        },
-        grep_string = {
-            theme = "dropdown",
-        },
-        find_files = {
-            theme = "dropdown",
-        },
-        buffers = {
-            theme = "dropdown",
-            previewer = false,
-            initial_mode = "normal",
-        },
-        planets = {
-            show_pluto = true,
-            show_moon = true,
-        },
-        colorscheme = {
-            -- enable_preview = true,
-        },
-        lsp_references = {
-            theme = "dropdown",
-            initial_mode = "normal",
-        },
-        lsp_definitions = {
-            theme = "dropdown",
-            initial_mode = "normal",
-        },
-        lsp_declarations = {
-            theme = "dropdown",
-            initial_mode = "normal",
-        },
-        lsp_implementations = {
-            theme = "dropdown",
-            initial_mode = "normal",
         },
     },
 }

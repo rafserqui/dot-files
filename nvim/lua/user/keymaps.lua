@@ -34,19 +34,11 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Leader Key --
--- An important key that precedes other commands. In this config is mapped to be space
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- The following remap is "space e" which uses the command ":Lex 30+Enter"
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 -- The <cr> stands for "carriage return" which is just the Enter key.
 -- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
 -- The number 30 that follows is the size of the window
-
 
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
@@ -63,7 +55,7 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
--- Now we remap "p" so that what we yanked first stays there (subtle but useful as shown in video)
+-- Now we remap "p" so that what we yanked first stays there 
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
@@ -73,8 +65,16 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files ignore=false<CR>", opts)
@@ -91,5 +91,12 @@ keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
 keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", opts)
 
+-- Map keys for diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to previous diagnostic message" })
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
 -- Quarto Preview
 keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
+

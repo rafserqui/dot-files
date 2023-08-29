@@ -26,14 +26,14 @@ local diff = {
 }
 
 local mode = {
-     -- mode component
-     "mode",
-     fmt = function(str)
-         -- return "▊"
-         return "  " .. str .. " "
-         -- return "  "
-     end,
-     padding = 0,
+    -- mode component
+    "mode",
+    fmt = function(str)
+        -- return "▊"
+        return "  " .. str .. " "
+        -- return "  "
+    end,
+    padding = 0,
 }
 
 local filetype = {
@@ -57,16 +57,6 @@ local filename = {
     path = 0,
 }
 
--- cool function for progress
---local progress = function()
---	local current_line = vim.fn.line(".")
---	local total_lines = vim.fn.line("$")
---	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
---	local line_ratio = current_line / total_lines
---	local index = math.ceil(line_ratio * #chars)
---	return chars[index]
---end
-
 lualine.setup({
     options = {
         icons_enabled = true,
@@ -80,7 +70,6 @@ lualine.setup({
         lualine_a = { branch, diagnostics },
         lualine_b = { mode },
         lualine_c = {},
-        -- lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_x = { diff, filename, filetype },
         lualine_y = { location },
         lualine_z = { "progress" },

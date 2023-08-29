@@ -1,22 +1,24 @@
-return {
-    -- LSP
-     {
-         'neovim/nvim-lspconfig',
-         dependencies = {
-             -- Automatically install LSPs to stdpath for neovim
-             { 'williamboman/mason.nvim', config = true },
-             'williamboman/mason-lspconfig.nvim',
+return{
+    -- NOTE: This is where your plugins related to LSP can be installed.
+    --  The configuration is done below. Search for lspconfig to find it below.
+    {
+        -- LSP Configuration & Plugins
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            -- Automatically install LSPs to stdpath for neovim
+            { 'williamboman/mason.nvim', config = true },
+            'williamboman/mason-lspconfig.nvim',
 
-             -- Useful status updates for LSP
-             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+            -- Useful status updates for LSP
+            -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-             -- Additional lua configuration, makes nvim stuff amazing!
-             'folke/neodev.nvim',
-         },
-     },
+            -- Additional lua configuration, makes nvim stuff amazing!
+            'folke/neodev.nvim',
+        },
+    },
 
-    --Autocompletion with nvim-cmp
+    -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
@@ -32,53 +34,22 @@ return {
         },
     },
 
---    'hrsh7th/nvim-cmp',          -- The completion plugin
---    'hrsh7th/cmp-buffer',        -- buffer completions
---    'hrsh7th/cmp-path',          -- path completions
---    'hrsh7th/cmp-cmdline',       -- cmdline completions
---    'saadparwaiz1/cmp_luasnip',  -- snippet completions
---    'hrsh7th/cmp-nvim-lsp',
---    'hrsh7th/cmp-nvim-lua',
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim' ,
 
-    -- Use TabNine
+    -- Colorschemes
+    'folke/tokyonight.nvim',
+    'sainnhe/gruvbox-material',
+
+    -- Statusline
+    'nvim-lualine/lualine.nvim',
+
+    -- Add indentation guides even on blank lines
     {
-        "tzachar/cmp-tabnine",
-        event = "BufRead",
-        build = "./install.sh",
-        dependencies = 'hrsh7th/nvim-cmp',
+        'lukas-reineke/indent-blankline.nvim',
     },
 
-    -- snippets
-    'L3MON4D3/LuaSnip', --snippet engine
-    'honza/vim-snippets',
-
-    -- Treesitter
-    {
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        build = ':TSUpdate',
-    },
-
-    -- NvimTree (File Explorer)
-    "nvim-tree/nvim-web-devicons",
-    {
-        'kyazdani42/nvim-tree.lua',
-        version = "*",
-    },
-
-    -- Surround with brackets
-    {
-        "kylechui/nvim-surround",
-        version = "*", -- Use for stability
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({ })
-        end
-    },
-
-    -- Telescope ==> Fuzzy finder
+    -- Fuzzy Finder (files, lsp, etc)
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
@@ -99,36 +70,34 @@ return {
         },
     },
 
-    'nvim-telescope/telescope-media-files.nvim',
-
-    -- Colorschemes
-    'folke/tokyonight.nvim',
-    'sainnhe/gruvbox-material',
-
-    -- Show indent lines
-    'lukas-reineke/indent-blankline.nvim',
-
-    -- Colorizer
-    'NvChad/nvim-colorizer.lua',
-
-    -- Status line
-    'nvim-lualine/lualine.nvim',
-
-    -- Bufferline
-    'akinsho/bufferline.nvim',
-
-    -- Git
-    'lewis6991/gitsigns.nvim',
+    -- Highlight, edit, and navigate code
+    {
+        'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        build = ':TSUpdate',
+    },
 
     -- Auto pairs
-    'windwp/nvim-autopairs',
-    'tpope/vim-repeat',
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
 
-    -- Comments
-    'numToStr/Comment.nvim',
+    -- Bufferline
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons'
+    },
 
     -- Startup
-    'goolord/alpha-nvim',
+    {
+        'goolord/alpha-nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+    };
 
     --Latex 
     'lervag/vimtex',
@@ -145,33 +114,38 @@ return {
     },
 
     -- Quarto
-    { 'quarto-dev/quarto-nvim' },
-    { 'quarto-dev/quarto-vim',
-        ft = 'quarto',
-        dependencies = {
-            'vim-pandoc/vim-pandoc-syntax',
-        },
-    },
-    { 'jmbuhr/otter.nvim',
-        config = function()
-            require 'otter'.setup {
-                lsp = {
-                    hover = { border = "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-                }
-            }
-        end,
-    },
 
+    {
+        'quarto-dev/quarto-nvim',
+        dev = false,
+        dependencies = {
+            {
+                'jmbuhr/otter.nvim',
+                dev = false,
+                dependencies = {
+                    { 'neovim/nvim-lspconfig' },
+                },
+                opts = {
+                    lsp = {
+                        hover = {
+                            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+                        }
+                    }
+                }
+            },
+        },
+        opts = {
+            lspFeatures = {
+                languages = { 'r', 'python', 'julia', 'bash', 'lua', 'html' },
+            },
+        }
+    },
     -- Markdown support for preview
     {
         'iamcco/markdown-preview.nvim',
         build = 'cd app && npm install',
         ft = 'markdown',
     },
-
-    -- Utilities
-    'lewis6991/impatient.nvim', -- Improve startup time for neovim
-    'akinsho/toggleterm.nvim',
 
    -- Trouble
     'folke/trouble.nvim'

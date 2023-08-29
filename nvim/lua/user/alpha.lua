@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-local dashboard = require "alpha.themes.dashboard"
+local dashboard = require("alpha.themes.dashboard")
 
 local function button(sc, txt, keybind, keybind_opts)
     local b = dashboard.button(sc, txt, keybind, keybind_opts)
@@ -11,7 +11,7 @@ local function button(sc, txt, keybind, keybind_opts)
     return b
 end
 
-local icons = require "user.icons"
+local icons = require("user.icons")
 
 dashboard.section.header.val = {
 "                                                     ",
@@ -22,6 +22,7 @@ dashboard.section.header.val = {
     "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
     "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
     "                                                     ",}
+
 dashboard.section.buttons.val = {
     button("f", icons.documents.Files .. " Find file", ":Telescope find_files ignore=true<CR>"),
     button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
