@@ -100,7 +100,10 @@ lspconfig.lua_ls.setup{
     flags = lsp_flags,
     settings = {
         Lua = {
-            diagnostics = { globals = { 'vim' } },
+            diagnostics = {
+                globals = { 'vim', 'quarto', 'pandoc' },
+                disable = { 'trailing-space' }
+            },
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
         }
