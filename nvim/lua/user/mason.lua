@@ -100,6 +100,7 @@ lspconfig.lua_ls.setup{
     flags = lsp_flags,
     settings = {
         Lua = {
+            diagnostics = { globals = { 'vim' } },
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
         }
