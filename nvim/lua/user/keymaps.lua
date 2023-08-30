@@ -35,10 +35,14 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- The following remap is "space e" which uses the command ":Lex 30+Enter"
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 -- The <cr> stands for "carriage return" which is just the Enter key.
 -- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
 -- The number 30 that follows is the size of the window
+
+-- NvimTree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
 
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
@@ -92,11 +96,12 @@ keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", opts)
 
 -- Map keys for diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to previous diagnostic message" })
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
+keymap("n", "<space>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- Quarto Preview
 keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
+keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
 

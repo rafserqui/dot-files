@@ -8,7 +8,6 @@ return{
             -- Automatically install LSPs to stdpath for neovim
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
-
             -- Useful status updates for LSP
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
@@ -16,6 +15,12 @@ return{
             -- Additional lua configuration, makes nvim stuff amazing!
             'folke/neodev.nvim',
         },
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require'lsp_signature'.setup(opts) end
     },
 
     -- Autocompletion
@@ -31,6 +36,12 @@ return{
 
             -- Adds a number of user-friendly snippets
             'rafamadriz/friendly-snippets',
+
+            -- Buffer completions
+            'hrsh7th/cmp-buffer',
+
+            -- Path completions
+            'hrsh7th/cmp-path',
         },
     },
 
@@ -45,9 +56,7 @@ return{
     'nvim-lualine/lualine.nvim',
 
     -- Add indentation guides even on blank lines
-    {
-        'lukas-reineke/indent-blankline.nvim',
-    },
+    'lukas-reineke/indent-blankline.nvim',
 
     -- Fuzzy Finder (files, lsp, etc)
     {
@@ -114,32 +123,31 @@ return{
     },
 
     -- Quarto
-
     {
-        'quarto-dev/quarto-nvim',
-        dev = false,
+        "quarto-dev/quarto-nvim",
+        ft = "quarto",
         dependencies = {
-            {
-                'jmbuhr/otter.nvim',
-                dev = false,
-                dependencies = {
-                    { 'neovim/nvim-lspconfig' },
-                },
-                opts = {
-                    lsp = {
-                        hover = {
-                            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-                        }
-                    }
-                }
-            },
+            "neovim/nvim-lspconfig",
+            "hrsh7th/nvim-cmp",
+            "jmbuhr/otter.nvim",
         },
         opts = {
             lspFeatures = {
-                languages = { 'r', 'python', 'julia', 'bash', 'lua', 'html' },
+                enabled = true,
+                languages = { "r", "python", "julia" },
             },
-        }
+            diagnostics = {
+                enabled = true,
+                triggers = { "BufWritePost" }
+            },
+            completion = { enabled = true },
+        },
     },
+    {
+        "jmbuhr/otter.nvim",
+        opts = {},
+    },
+
     -- Markdown support for preview
     {
         'iamcco/markdown-preview.nvim',
@@ -147,6 +155,13 @@ return{
         ft = 'markdown',
     },
 
-   -- Trouble
-    'folke/trouble.nvim'
+    -- Trouble
+    'folke/trouble.nvim',
+
+    -- NvimTree (File Explorer)
+    {
+        'nvim-tree/nvim-tree.lua',
+        version = "*",
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+    },
 }
