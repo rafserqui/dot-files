@@ -1,4 +1,4 @@
-return{
+return {
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
     {
@@ -26,22 +26,34 @@ return{
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
+        branch = 'main',
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
+            { 'L3MON4D3/LuaSnip' },
+            { 'saadparwaiz1/cmp_luasnip' },
 
             -- Adds LSP completion capabilities
-            'hrsh7th/cmp-nvim-lsp',
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lsp-signature-help' },
 
             -- Adds a number of user-friendly snippets
-            'rafamadriz/friendly-snippets',
+            { 'rafamadriz/friendly-snippets' },
+            { 'onsails/lspkind-nvim' },
 
             -- Buffer completions
-            'hrsh7th/cmp-buffer',
+            { 'hrsh7th/cmp-buffer' },
 
             -- Path completions
-            'hrsh7th/cmp-path',
+            { 'hrsh7th/cmp-path' },
+
+            -- Pandoc references
+            { 'jmbuhr/cmp-pandoc-references' },
+
+            -- Treesitter completion
+            { 'ray-x/cmp-treesitter' },
+
+            -- Latex symbols
+            { 'kdheepak/cmp-latex-symbols' },
         },
     },
 
@@ -82,10 +94,12 @@ return{
     -- Highlight, edit, and navigate code
     {
         'nvim-treesitter/nvim-treesitter',
+        tag = nil,
+        branch = 'master',
+        run = ':TSUpdate',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
-        build = ':TSUpdate',
     },
 
     -- Auto pairs
@@ -111,41 +125,38 @@ return{
     --Latex 
     'lervag/vimtex',
 
-    -- Julia
-    'JuliaEditorSupport/julia-vim',
-
     -- For Julia REPL
     'axvr/zepl.vim',
 
     -- R
-    { 'jalvesaq/Nvim-R',
+    { 
+        'jalvesaq/Nvim-R',
         branch = 'stable'
     },
 
     -- Quarto
     {
-        "quarto-dev/quarto-nvim",
-        ft = "quarto",
+        'quarto-dev/quarto-nvim',
+        dev = false,
         dependencies = {
-            "neovim/nvim-lspconfig",
-            "hrsh7th/nvim-cmp",
-            "jmbuhr/otter.nvim",
+            {
+                'jmbuhr/otter.nvim',
+                dev = false,
+                dependencies = {
+                    { 'neovim/nvim-lspconfig' },
+                },
+                opts = {
+                    lsp = {
+                        hover = { border = require 'misc.style'.border }
+                    },
+                },
+            },
         },
         opts = {
             lspFeatures = {
-                enabled = true,
-                languages = { "r", "python", "julia" },
+                languages = { 'r', 'python', 'julia', 'bash', 'lua' },
             },
-            diagnostics = {
-                enabled = true,
-                triggers = { "BufWritePost" }
-            },
-            completion = { enabled = true },
         },
-    },
-    {
-        "jmbuhr/otter.nvim",
-        opts = {},
     },
 
     -- Markdown support for preview
@@ -163,5 +174,29 @@ return{
         'nvim-tree/nvim-tree.lua',
         version = "*",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
+    },
+    
+    -- Typst
+    {
+        'kaarmu/typst.vim',
+        ft = 'typst',
+        lazy=false,
+    },
+
+    -- Colorizer
+    {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require 'colorizer'.setup {
+                css = { css_fn = true, css = true },
+                'javascript',
+                'html',
+                'r',
+                'rmd',
+                'qmd',
+                'markdown',
+                'python'
+            }
+        end
     },
 }

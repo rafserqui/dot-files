@@ -9,6 +9,8 @@ if not status_ok_1 then
 end
 
 local servers = {
+    "cssls",
+    "emmet_ls",
     "julials",
     "lua_ls",
     "marksman",
@@ -16,6 +18,7 @@ local servers = {
     "pyright",
     "r_language_server",
     "texlab",
+    "typst_lsp",
     "yamlls",
 }
 
@@ -63,11 +66,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
     client.server_capabilities.document_formatting = true
 end
 
-local on_attach2 = function(client, bufnr)
+local on_attach_qmd = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -78,7 +80,6 @@ local on_attach2 = function(client, bufnr)
     buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
     client.server_capabilities.document_formatting = true
 end
 
@@ -87,11 +88,37 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+-- Handlers
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
+    { border = require 'misc.style'.border })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help,
+    { border = require 'misc.style'.border })
+
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local util = require("lspconfig.util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- CSS
+lspconfig.cssls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags
+}
+
+-- Emmet
+lspconfig.emmet_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags
+}
 
 -- Lua
 lspconfig.lua_ls.setup{
@@ -123,7 +150,7 @@ lspconfig.julials.setup{
 --     [core]
 --     markdown.file_extensions = ["md", "markdown", "qmd"]
 lspconfig.marksman.setup {
-    on_attach = on_attach2,
+    on_attach = on_attach_qmd,
     capabilities = capabilities,
     filetypes = { 'markdown', 'quarto' },
     root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
@@ -136,7 +163,7 @@ lspconfig.r_language_server.setup {
     flags = lsp_flags,
     settings = {
         r = { lsp = { rich_documentation = false }, },
-    },
+    }
 }
 
 -- Latex
@@ -144,6 +171,14 @@ lspconfig.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags
+}
+
+-- Typst
+lspconfig.typst_lsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
+    settings = { exportPdf = "onSave" }
 }
 
 -- Yaml

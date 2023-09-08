@@ -1,8 +1,6 @@
 -- Locals to shorten what I need to write to remap keys
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -69,6 +67,10 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+-- Terminal navigation ---
+keymap("t", "<esc>", "<C-\\><C-n>", opts)
+keymap("n", "<C-\\>", ":terminal<CR>a", opts)
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -92,8 +94,9 @@ keymap("n", "k", "gk", opts)
 
 -- Map keys for Gitsigns
 keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
-keymap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", opts)
-keymap("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", opts)
+keymap("n", "<leader>gf", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "<leader>gu", ":Gitsigns reset_hunk<CR>", opts)
+keymap("n", "<leader>gbu", ":Gitsigns reset_buffer<CR>", opts)
 
 -- Map keys for diagnostics
 keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
@@ -104,4 +107,8 @@ keymap("n", "<space>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 -- Quarto Preview
 keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
 keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
+
+-- Typst view pdf
+keymap("n", "<leader>lt", ':TypstWatch<CR>', opts)
+
 

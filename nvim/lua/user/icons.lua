@@ -1,7 +1,6 @@
 -- https://github.com/microsoft/vscode/blob/main/src/vs/base/common/codicons.ts
 -- go to the above and then enter <c-v>u<unicode> and the symbold should appear
 -- or go here and upload the font file: https://mathew-kurian.github.io/CharacterMap/
--- find more here: https://www.nerdfonts.com/cheat-sheet
 vim.g.use_nerd_icons = true
 if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
   -- elseif vim.fn.has "mac" == 1 then
@@ -12,19 +11,15 @@ if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
         Function = "",
         Constructor = "",
         Field = "",
-        -- Variable = "",
         Variable = "",
         Class = "",
         Interface = "",
-        -- Module = "",
         Module = "",
         Property = "",
         Unit = "",
         Value = "",
         Enum = "",
-        -- Keyword = "",
         Keyword = "",
-        -- Snippet = "",
         Snippet = "",
         Color = "",
         File = "",
@@ -41,7 +36,7 @@ if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
         Array = "",
         Number = "",
         String = "",
-        Boolean = "蘒",
+        Boolean = " ",
         Object = "",
     },
     documents = {
@@ -98,7 +93,7 @@ if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
         Warning = "",
         Information = "",
         Question = "",
-        Hint = "",
+        Hint = "",
     },
     misc = {
         Robot = "ﮧ",
