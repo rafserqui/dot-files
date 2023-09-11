@@ -29,7 +29,8 @@ alias -g ls="lsd"
 alias -g nvim="nvim.appimage"
 
 # Change color of (o+w) directories
-eval "$(dircolors ~/.config/lsd/.dircolors)"
+# eval "$(dircolors ~/.config/lsd/.dircolors)"
+export LS_COLORS="$(vivid generate snazzy)"
 
 # Python alias
 alias -g python=python3
