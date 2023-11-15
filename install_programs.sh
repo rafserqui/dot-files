@@ -2,11 +2,15 @@
 
 sudo apt update -y
 
-# Icon theme
-git clone https://github.com/vinceliuice/Qogir-icon-theme.git  ~/Downloads/
+# Icon themes
+git clone https://github.com/vinceliuice/Qogir-icon-theme.git  ~/Downloads/Qogir-icon-theme
 cd ~/Downloads/Qogir-icon-theme/
 sudo ./install.sh
 cd ~
+
+git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git ~/Downloads/Tela-Theme/
+cd ~/Downloads/Tela-Theme/
+sudo ./install.sh
 
 # Zathura
 sudo apt install zathura -y
@@ -15,7 +19,7 @@ sudo apt install zathura -y
 git clone https://github.com/lighthaus-theme/zathura ~/.config/zathura/
 
 # Add zathurarc for config 
-cp ~/Downloads/dot-files/zathurarc ~/.config/zathura/
+cp ~/Documents/dot-files/zathurarc ~/.config/zathura/
 
 # Make zathura the default pdf reader
 xdg-mime default org.pwmt.zathura.desktop application/pdf
@@ -29,6 +33,12 @@ flatpak install flathub com.spotify.Client
 # Skype
 flatpak install flathub com.skype.Client
 
+# Flameshot
+flatpak install flathub org.flameshot.Flameshot
+
+# Install Obsidian
+flatpak install flathub md.obsidian.Obsidian
+
 # GNOME Tweaks
 sudo apt install gnome-tweaks -y
 
@@ -36,14 +46,56 @@ sudo apt install gnome-tweaks -y
 sudo apt install bat -y
 
 # Install lsd
-sudo apt install lsd -y
+cd ~/Downloads/
+wget https://github.com/lsd-rs/lsd/releases/download/v1.0.0/lsd-musl_1.0.0_amd64.deb
+sudo dpkg -i lsd-musl_1.0.0_amd64.deb
+rm -rf lsd-musl_1.0.0_amd64.deb
+cd ~
+
+# Install alacritty
+sudo apt install alacritty -y
 
 # To select alacritty as default terminal emulator use the command
 # sudo update-alternatives --config x-terminal-emulator
 # Then choose alacritty
 
 # Install vivid
-wget "https://github.com/sharkdp/vivid/releases/download/v0.8.0/vivid_0.8.0_amd64.deb"
-sudo dpkg -i vivid_0.8.0_amd64.deb
+cd ~/Downloads/
+wget "https://github.com/sharkdp/vivid/releases/download/v0.9.0/vivid-musl_0.9.0_amd64.deb"
+sudo dpkg -i vivid-musl_0.9.0_amd64.deb
+rm -rf vivid-musl_0.9.0_amd64.deb
 # Add to the .zshrc
 # export LS_COLORS="$(vivid generate snazzy)"
+
+# Install ranger
+cd ~/Documents/dot-files/
+sudo apt install ranger -y
+cp -r ranger/ ~/.config/
+
+# Install ueberzug for image preview
+cd ~/Downloads/
+
+# Install dependencies
+sudo apt-get install libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev
+
+# Install Ueberzug++
+wget "https://download.opensuse.org/repositories/home:/justkidding/xUbuntu_22.04/amd64/ueberzugpp_2.9.2_amd64.deb"
+sudo dpkg -i ueberzugpp_2.9.2_amd64.deb
+
+# Install btop
+cd ~/Documents/dot-files/
+sudo apt install btop -y
+cp -r ./btop/ ~/.config/
+
+# Install fuzzy finder
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# Install Dropbox
+cd ~/Downloads/
+wget "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
+sudo dpkg -i dropbox_2020.03.04_amd64.deb
+rm -rf dropbox_2020.03.04_amd64.deb
+
+# Install R-Language
+
