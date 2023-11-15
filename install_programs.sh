@@ -97,5 +97,17 @@ wget "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd
 sudo dpkg -i dropbox_2020.03.04_amd64.deb
 rm -rf dropbox_2020.03.04_amd64.deb
 
-# Install R-Language
+# Install node for some language servers
+cd ~/Downloads/
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+nvm install node
 
+# Install Julia
+cd ~/Downloads/
+wget "https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.4-linux-x86_64.tar.gz"
+tar xf julia-1.9.4-linux-x86_64.tar.gz
+mv ./julia-1.9.4/ ~/
+rm -rf julia-1.9.4-linux-x86_64.tar.gz
+
+# Install R language
+sudo apt install r-base -y
