@@ -109,6 +109,8 @@ keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
 keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
 
 -- Typst view pdf
-keymap("n", "<leader>lt", ':TypstWatch<CR>', opts)
+keymap("n", "<leader>lt", ":TypstWatch<CR>", opts)
 
+-- Fire up the Julia REPL
+keymap("n", "<leader>jr", ":Repl julia<CR>", opts)
 

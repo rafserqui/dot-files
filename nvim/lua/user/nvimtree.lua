@@ -98,6 +98,7 @@ nvim_tree.setup {
         group_empty = false,
         highlight_git = true,
         highlight_opened_files = "none",
+        root_folder_label = false,
         root_folder_modifier = ":t",
         indent_markers = {
             enable = false,
@@ -164,10 +165,7 @@ nvim_tree.setup {
     },
     view = {
         width = 30,
-        -- height = 30,
-        hide_root_folder = false,
         side = "left",
-        -- auto_resize = true,
         number = false,
         relativenumber = false,
     },

@@ -62,13 +62,13 @@ return {
 
     -- Colorschemes
     'folke/tokyonight.nvim',
-    'sainnhe/gruvbox-material',
+    --'sainnhe/gruvbox-material',
 
     -- Statusline
     'nvim-lualine/lualine.nvim',
 
     -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
     -- Fuzzy Finder (files, lsp, etc)
     {
@@ -125,9 +125,6 @@ return {
     --Latex 
     'lervag/vimtex',
 
-    -- For Julia REPL
-    'axvr/zepl.vim',
-
     -- R
     { 
         'jalvesaq/Nvim-R',
@@ -137,11 +134,17 @@ return {
     -- Quarto
     {
         'quarto-dev/quarto-nvim',
-        dev = false,
+        ft = 'quarto',
+        diagnostics = {
+            enabled = true,
+            triggers = { "BufWritePost" }
+        },
+        completion = {
+            enabled = true,
+        },
         dependencies = {
             {
                 'jmbuhr/otter.nvim',
-                dev = false,
                 dependencies = {
                     { 'neovim/nvim-lspconfig' },
                 },

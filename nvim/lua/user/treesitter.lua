@@ -10,12 +10,11 @@ configs.setup {
         'julia', 'bash', 'yaml', 'lua', 'vim',
         'query', 'vimdoc', 'latex', 'css',
     },
-    sync_install = false,
-    ignore_install = { "" },
-    highlight = { enable = true },
-    autopairs = {
+    highlight = {
         enable = true,
-    },
+        additional_vim_regex_highlighting = false
+        },
+    autopairs = { enable = true, },
     indent = { enable = true },
     rainbow = {
         enable = true,
@@ -40,9 +39,17 @@ configs.setup {
             set_jumps = true, 
             goto_next_start = {
                 [']]'] = '@class.inner', -- Move across sectios of code
+                [']m'] = '@function.outer',
+            },
+            goto_next_end = {
+              [']M'] = '@function.outer',
             },
             goto_previous_start = {
                 ['[['] = '@class.inner',
+                ['[m'] = '@function.outer',
+            },
+            goto_previous_end = {
+                ['[M'] = '@function.outer',
             },
         },
     },
