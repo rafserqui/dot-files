@@ -1,0 +1,79 @@
+%===============================================================================
+% Compilation should work with PDFLaTeX
+%===============================================================================
+% Type of document and general formatting
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\linespread{1.25}
+
+%===============================================================================
+% These packages are for language and font settings
+\usepackage[english,activeacute]{babel} % Language
+\usepackage[sc]{mathpazo}				% Math font
+\usepackage{libertine}                  % Text font
+\usepackage[T1]{fontenc}				% T1 Encoding of font
+\usepackage[utf8]{inputenc}			% Special symbols
+\usepackage{authblk}
+
+%===============================================================================
+\usepackage{amsmath,amsfonts,amssymb}	% Math symbols
+\usepackage{amsthm}                   % Theorems
+\usepackage{dsfont}						        % Math symbols like R for reals...
+
+%===============================================================================
+% Tables
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% Figures
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{lscape}
+%===============================================================================
+\usepackage{accents}
+\newcommand*{\dt}[1]{%
+	\accentset{\mbox{\large\bfseries .}}{#1}} % Larger dot for time derivative
+
+
+\usepackage{hyperref}
+\hypersetup
+{
+    pdfsubject={},
+    colorlinks = {true},
+    linkcolor = {FireBrick},
+    citecolor = {FireBrick},
+    urlcolor = {RoyalBlue},
+}
+\usepackage[svgnames]{xcolor}
+\usepackage{appendix}
+\usepackage{marvosym}
+\usepackage{enumitem} %For enumerating with letters with option [a)]
+\usepackage{fancyvrb}  %To reduce font size in verbatim environment
+\usepackage{natbib}
+\usepackage{siunitx}
+\sisetup{input-open-uncertainty  = ,
+        input-close-uncertainty = ,
+        table-space-text-pre    = (,
+        table-space-text-post   = \sym{***},
+        table-align-text-pre    = false,
+        table-align-text-post   = false}
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+
+\usepackage[super]{nth}
+\usepackage{float}
+
+\newcommand{\source}[1]{\caption*{\tiny Source: {#1}} }
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
+\newcommand{\jelcodes}[1]{\textbf{\textit{JEL Classification:}} #1}
+\DeclareMathOperator*{\argmin}{arg\,min}
+

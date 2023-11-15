@@ -48,9 +48,9 @@
 % Language and font settings
 %===========================================================
 \usepackage[english,activeacute]{babel} % Language
-\usefonttheme{professionalfonts}		% Avoid overwriting fonts
+\usefonttheme{serif}
 
-\usepackage[sfdefault,light]{FiraSans}
+\usepackage{cochineal}
 \usepackage[utf8]{inputenc}				% Special symbols
 \usepackage[T1]{fontenc}				% T1 Encoding of font
 \usepackage{csquotes}
@@ -68,8 +68,8 @@
 \usepackage{hyperref}
 \hypersetup
 {
-    pdfauthor={Rafael Serrano Quintero},
-    pdfsubject={Introduction to Matlab},
+    pdfauthor={},
+    pdfsubject={},
     colorlinks = {true},
     linkcolor = {LightBlue},
     citecolor = {LinksPink},
@@ -81,6 +81,7 @@
 %===========================================================
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{decorations.markings}
 
 \usepackage{longtable}
 \usepackage{appendix}
@@ -88,22 +89,69 @@
 \usepackage{enumerate} %For enumerating with letters with option [a)]
 \usepackage{epstopdf}
 
-\usepackage[style = authoryear]{biblatex}
+\usepackage[style = authoryear,
+        natbib=true,
+        backend=biber]{biblatex}
 \newcommand{\mkbibbracketscol}[1]{\textcolor{LinksPink}{\mkbibbrackets{#1}}}
 
-%\DeclareCiteCommand{\cite}[\mkbibbracketscol]
-%  {\usebibmacro{prenote}}
-%  {\usebibmacro{citeindex}%
-%   \usebibmacro{cite}}
-%  {\multicitedelim}
-%  {\usebibmacro{postnote}}
+\renewbibmacro*{cite}{%
+  \printtext[bibhyperref]{%
+    \iffieldundef{shorthand}
+      {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+         {\usebibmacro{cite:label}%
+          \setunit{\printdelim{nonameyeardelim}}}
+         {\printnames{labelname}%
+          \setunit{\printdelim{nameyeardelim}}}%
+       \usebibmacro{cite:labeldate+extradate}}
+      {\usebibmacro{cite:shorthand}}}}
 
-\DeclareCiteCommand{\parencite}[\mkbibbracketscol]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
+\renewbibmacro*{citeyear}{%
+  \printtext[bibhyperref]{%
+    \iffieldundef{shorthand}
+      {\iffieldundef{labelyear}
+         {\usebibmacro{cite:label}}
+         {\usebibmacro{cite:labeldate+extradate}}}
+      {\usebibmacro{cite:shorthand}}}}
+
+\renewbibmacro*{textcite}{%
+  \ifnameundef{labelname}
+    {\iffieldundef{shorthand}
+       {\printtext[bibhyperref]{%
+          \usebibmacro{cite:label}}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonameyeardelim}\bibopenparen}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \printtext[bibhyperref]{\usebibmacro{cite:labeldate+extradate}}}
+       {\printtext[bibhyperref]{\usebibmacro{cite:shorthand}}}}
+    {\printtext[bibhyperref]{\printnames{labelname}}%
+     \setunit{%
+       \global\booltrue{cbx:parens}%
+       \printdelim{nameyeardelim}\bibopenparen}%
+     \ifnumequal{\value{citecount}}{1}
+       {\usebibmacro{prenote}}
+       {}%
+     \usebibmacro{citeyear}}}
+
+\renewbibmacro*{cite:shorthand}{%
+  \printfield{shorthand}}
+
+\renewbibmacro*{cite:label}{%
+  \iffieldundef{label}
+    {\printfield[citetitle]{labeltitle}}
+    {\printfield{label}}}
+
+\renewbibmacro*{cite:labeldate+extradate}{%
+  \printlabeldateextra}
+
+% \DeclareCiteCommand{\parencite}[\mkbibbracketscol]
+%   {\usebibmacro{prenote}}
+%   {\usebibmacro{citeindex}%
+%    \usebibmacro{cite}}
+%   {\multicitedelim}
+%   {\usebibmacro{postnote}}
 
 
 \usepackage[flushleft]{threeparttable}
@@ -174,6 +222,10 @@
     \newtheorem{examples}{\translate{Examples}}
     \newtheorem{exercise}{Exercise}
 
+    \theoremstyle{plain}
+    \newtheorem{assumption}{Assumption}
+
+    \newtheorem{proposition}{\translate{Proposition}}
     % Compatibility
     \newtheorem{Beispiel}{Beispiel}
     \newtheorem{Beispiele}{Beispiele}
@@ -221,4 +273,7 @@
 \setbeamertemplate{section page}[mine]
 \setbeamertemplate{subsection page}[mine_sub]
 
-
+% Larger dot derivative
+\usepackage{accents}
+\newcommand*{\dt}[1]{%
+  \accentset{\mbox{\large\bfseries .}}{#1}}
