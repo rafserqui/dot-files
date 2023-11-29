@@ -16,9 +16,14 @@
 %===========================================================
 % Color specifications
 %===========================================================
-\definecolor{LightBlue}{HTML}{0494e7}  % Headings color
-\definecolor{CitationsBlue}{HTML}{2B6684} 	% Color for citations
-\definecolor{LinksPink}{HTML}{ff0054}       % Color for links
+%\definecolor{LightBlue}{HTML}{0494e7}       % Headings color
+%\definecolor{CitationsBlue}{HTML}{2B6684} 	 % Color for citations
+%\definecolor{LinksPink}{HTML}{ff0054}       % Color for links
+
+\definecolor{LightBlue}{HTML}{0077b6}
+\definecolor{LinksPink}{HTML}{2a9d8f}
+\definecolor{CitationsBlue}{HTML}{8ecae6}
+\definecolor{LightGray}{HTML}{818FB4}
 
 % Template for syntax highlighting
 \definecolor{BeigeBackground}{HTML}{fdf6e3}
@@ -91,6 +96,8 @@
 
 \usepackage[style = authoryear,
         natbib=true,
+        maxcitenames=2,
+        uniquelist=false,
         backend=biber]{biblatex}
 \newcommand{\mkbibbracketscol}[1]{\textcolor{LinksPink}{\mkbibbrackets{#1}}}
 
@@ -135,17 +142,17 @@
        {}%
      \usebibmacro{citeyear}}}
 
-\renewbibmacro*{cite:shorthand}{%
-  \printfield{shorthand}}
-
-\renewbibmacro*{cite:label}{%
-  \iffieldundef{label}
-    {\printfield[citetitle]{labeltitle}}
-    {\printfield{label}}}
-
-\renewbibmacro*{cite:labeldate+extradate}{%
-  \printlabeldateextra}
-
+% \renewbibmacro*{cite:shorthand}{%
+%   \printfield{shorthand}}
+% 
+% \renewbibmacro*{cite:label}{%
+%   \iffieldundef{label}
+%     {\printfield[citetitle]{labeltitle}}
+%     {\printfield{label}}}
+% 
+% \renewbibmacro*{cite:labeldate+extradate}{%
+%   \printlabeldateextra}
+% 
 % \DeclareCiteCommand{\parencite}[\mkbibbracketscol]
 %   {\usebibmacro{prenote}}
 %   {\usebibmacro{citeindex}%
