@@ -32,22 +32,11 @@ alias -g nvim="nvim.appimage"
 # eval "$(dircolors ~/.config/lsd/.dircolors)"
 export LS_COLORS="$(vivid generate snazzy)"
 
-# Python alias
-alias -g python=python3
+# >>> juliaup initialize >>>
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/rafserqui/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/rafserqui/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/rafserqui/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/rafserqui/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# ! Contents within this block are managed by juliaup !!
 
+path('/home/rafserqui/.juliaup/bin/' $path)
+export PATH
 
+# <<< juliaup initialize <<<
