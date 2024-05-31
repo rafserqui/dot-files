@@ -8,11 +8,13 @@ configs.setup {
     ensure_installed = {
         'r', 'python', 'markdown', 'markdown_inline',
         'julia', 'bash', 'yaml', 'lua', 'vim',
-        'query', 'vimdoc', 'latex', 'css',
+        'query', 'vimdoc', 'css', 'latex',
     },
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = false
+        additional_vim_regex_highlighting = false,
+        -- diable = { "latex" },
+        -- additional_vim_regex_highlighting = { "latex" },
         },
     autopairs = { enable = true, },
     indent = { enable = true },

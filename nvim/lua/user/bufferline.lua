@@ -22,7 +22,6 @@ bufferline.setup{
         max_name_length = 30,
         max_prefix_length = 30,
         separator_style = "thin",
-        buffer_close_icon = "",
         modified_icon = "●",
         close_icon = "",
         show_close_icon = false,

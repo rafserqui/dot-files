@@ -32,15 +32,17 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- The following remap is "space e" which uses the command ":Lex 30+Enter"
--- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
--- The <cr> stands for "carriage return" which is just the Enter key.
--- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
--- The number 30 that follows is the size of the window
-
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+    -- The following remap is "space e" which uses the command ":Lex 30+Enter"
+    keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+    -- The <cr> stands for "carriage return" which is just the Enter key.
+    -- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
+    -- The number 30 that follows is the size of the window
+elseif status_ok then
+    -- NvimTree
+    keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+end
 
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
@@ -112,5 +114,7 @@ keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
 keymap("n", "<leader>lt", ":TypstWatch<CR>", opts)
 
 -- Fire up the Julia REPL
-keymap("n", "<leader>jr", ":Repl julia<CR>", opts)
+-- keymap("n", "<leader>jr", ":Repl julia<CR>", opts)
 
+-- Hide highlight after search
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)

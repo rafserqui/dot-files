@@ -61,8 +61,8 @@ return {
     'lewis6991/gitsigns.nvim' ,
 
     -- Colorschemes
-    'folke/tokyonight.nvim',
-    --'sainnhe/gruvbox-material',
+    { "Shatur/neovim-ayu" },
+    -- { "diegoulloao/neofusion.nvim", priority = 1000 , config = true },
 
     -- Statusline
     'nvim-lualine/lualine.nvim',
@@ -73,7 +73,7 @@ return {
     -- Fuzzy Finder (files, lsp, etc)
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        tag = '0.1.6',
         dependencies = {
             'nvim-lua/plenary.nvim',
             -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -106,7 +106,9 @@ return {
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        opts = {}
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equalent to setup({}) function
     },
 
     -- Bufferline
@@ -123,12 +125,16 @@ return {
     };
 
     --Latex 
-    'lervag/vimtex',
+    {
+        "lervag/vimtex",
+        lazy = false,
+        tag = "v2.15",
+    },
 
     -- R
-    { 
-        'jalvesaq/Nvim-R',
-        branch = 'stable'
+    {
+        "R-nvim/R.nvim",
+        lazy = false
     },
 
     -- Quarto
@@ -170,7 +176,17 @@ return {
     },
 
     -- Trouble
-    'folke/trouble.nvim',
+    {
+        "folke/trouble.nvim",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+        },
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+    },
 
     -- NvimTree (File Explorer)
     {
@@ -178,7 +194,7 @@ return {
         version = "*",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
-    
+
     -- Typst
     {
         'kaarmu/typst.vim',

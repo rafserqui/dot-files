@@ -1,7 +1,13 @@
--- Options for Nvim-R
-vim.g["R_assign"] = '0'
-vim.g["R_disable_cmds"] = {
-    'RSendFunction', 'RESendFunction', 'RDSendFunction',
+local status_ok, rnvim = pcall(require, "r")
+if not status_ok then
+    return
+end
+
+rnvim.setup({
+    rconsole_width = 0,
+    disable_cmds = {
+        'RSendFunction', 'RESendFunction', 'RDSendFunction',
         'RSendMBlock', 'RESendMBlock', 'RDSendMBlock',
-        'REDSendMBlock'}
-vim.g["R_rconsole_width"] = '0' -- Always split horizontally
+        'REDSendMBlock'
+    }
+})

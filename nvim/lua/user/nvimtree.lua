@@ -3,8 +3,6 @@ if not status_ok then
     return
 end
 
-local icons = require "user.icons"
-
 local function on_attach(bufnr)
     local api = require('nvim-tree.api')
 
@@ -123,8 +121,6 @@ nvim_tree.setup {
                 default = "",
                 symlink = "",
                 folder = {
-                    arrow_open = icons.ui.ArrowOpen,
-                    arrow_closed = icons.ui.ArrowClosed,
                     default = "",
                     open = "",
                     empty = "",
@@ -146,12 +142,6 @@ nvim_tree.setup {
     },
     diagnostics = {
         enable = true,
-        icons = {
-            hint = icons.diagnostics.Hint,
-            info = icons.diagnostics.Information,
-            warning = icons.diagnostics.Warning,
-            error = icons.diagnostics.Error,
-        },
     },
     update_focused_file = {
         enable = true,

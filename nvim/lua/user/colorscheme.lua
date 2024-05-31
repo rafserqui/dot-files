@@ -1,5 +1,6 @@
-local colorscheme = "tokyonight-moon"
---local colorscheme = "gruvbox-material"
+-- local colorscheme = "onedark" -- "tokyonight-moon" "tokyonight-day" "gruvbox-material"
+-- local colorscheme = "neofusion"
+local colorscheme = "ayu-mirage"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
@@ -8,12 +9,3 @@ if not status_ok then
     return
 end
 
--- Config gruvbox
---vim.o.background = "dark"
---vim.g.gruvbox_material_background = "hard"
---vim.g.gruvbox_material_better_performance = 1
-
--- Set up transparency
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })

@@ -1,6 +1,6 @@
 require("user.options")
-require("user.keymaps")
 require("user.lazy")
+require("user.keymaps")
 require("user.treesitter")
 require("user.mason")
 require("user.cmp")
@@ -8,7 +8,6 @@ require("user.lsp-signature")
 
 -- Require plugins options
 require("user.alpha")
-require("user.autopairs")
 require("user.bufferline")
 require("user.colorscheme")
 require("user.gitsigns")

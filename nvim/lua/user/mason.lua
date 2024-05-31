@@ -175,7 +175,10 @@ lspconfig.typst_lsp.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
-    settings = { exportPdf = "onSave" }
+    filetypes = { "typst" },
+    settings = { 
+        exportPdf = "onSave",
+    }
 }
 
 -- Yaml

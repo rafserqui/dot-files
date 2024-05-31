@@ -11,8 +11,6 @@ local function button(sc, txt, keybind, keybind_opts)
     return b
 end
 
-local icons = require("user.icons")
-
 dashboard.section.header.val = {
 "                                                     ",
     "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
@@ -24,13 +22,13 @@ dashboard.section.header.val = {
     "                                                     ",}
 
 dashboard.section.buttons.val = {
-    button("f", icons.documents.Files .. " Find file", ":Telescope find_files ignore=true<CR>"),
-    button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-    button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
-    button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-    button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
-    button("u", icons.ui.CloudDownload .. " Lazy", ":Lazy<CR>"),
-    button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
+    button("f", "󰈞  Find file", ":Telescope find_files ignore=true<CR>"),
+    button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+    button("r", "  Recently opened files", ":Telescope oldfiles <CR>"),
+    button("t", "󰈬  Find word", ":Telescope live_grep <CR>"),
+    button("c", "  Config", ":e ~/.config/nvim/init.lua <CR>"),
+    button("u", "  Lazy", ":Lazy<CR>"),
+    button("q", "󰅗  Quit", ":qa<CR>"),
 }
 local function footer()
     return ""
