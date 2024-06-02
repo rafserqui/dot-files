@@ -1,6 +1,6 @@
-local status_ok, bufferline= pcall(require, "bufferline")
+local status_ok, bufferline = pcall(require, "bufferline")
 if not status_ok then
-    return
+	return
 end
 
 local opts = { noremap = true, silent = true }
@@ -14,22 +14,21 @@ keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
 keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
 
-bufferline.setup{
-    options = {
-        show_buffer_close_icons = false,
-        show_tab_indicators = true,
-        enforce_regular_tabs = true,
-        max_name_length = 30,
-        max_prefix_length = 30,
-        separator_style = "thin",
-        modified_icon = "●",
-        close_icon = "",
-        show_close_icon = false,
-        left_trunc_marker = "",
-        right_trunc_marker = "",
-        indicator = {
-            icon = "▎",
-            style = "icon"
-        }
-    },
-}
+bufferline.setup({
+	options = {
+		show_buffer_close_icons = false,
+		show_tab_indicators = true,
+		enforce_regular_tabs = true,
+		max_name_length = 30,
+		max_prefix_length = 30,
+		separator_style = "thin",
+		modified_icon = "●",
+		show_close_icon = false,
+		left_trunc_marker = "",
+		right_trunc_marker = "",
+		indicator = {
+			icon = "▎",
+			style = "icon",
+		},
+	},
+})

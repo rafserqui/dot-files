@@ -4,20 +4,20 @@ if not status_ok then
 end
 
 local function on_attach(bufnr)
-    local api = require('nvim-tree.api')
+    local api = require("nvim-tree.api")
 
     local function opts(desc)
         return {
-            desc = 'nvim-tree: ' .. desc,
+            desc = "nvim-tree: " .. desc,
             buffer = bufnr,
             noremap = true,
             silent = true,
-            nowait = true
+            nowait = true,
         }
     end
 
-
-    -- BEGIN_DEFAULT_ON_ATTACH
+    --[[
+    --BEGIN_DEFAULT_ON_ATTACH
     vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
     vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
     vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
@@ -71,17 +71,21 @@ local function on_attach(bufnr)
     vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
     vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
     -- END_DEFAULT_ON_ATTACH
-
+    --]]
 
     -- Mappings migrated from view.mappings.list
-    vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
-    vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
-    vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
-    vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Preview'))
-    vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
+    vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
+    vim.keymap.set("n", "r", api.fs.rename, opts("Rename"))
+    vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))
+    vim.keymap.set("n", "D", api.fs.trash, opts("Trash"))
+    vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+    vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+    vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
+    vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Preview"))
+    vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
 end
 
-nvim_tree.setup {
+nvim_tree.setup({
     on_attach = on_attach,
     hijack_directories = {
         enable = false,
@@ -159,4 +163,4 @@ nvim_tree.setup {
         number = false,
         relativenumber = false,
     },
-}
+})

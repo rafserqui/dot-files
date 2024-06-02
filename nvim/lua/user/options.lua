@@ -1,8 +1,9 @@
 -- Leader Key --
--- An important key that precedes other commands. In this config is mapped to be space
---Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- Nerd Font
+vim.g.have_nerd_font = true
 
 -- :help options
 vim.opt.clipboard = "unnamedplus" -- access system clipboard
@@ -15,7 +16,7 @@ vim.opt.splitright = true -- all vertical splits go to the right
 vim.opt.splitbelow = true -- all horizontal splits go below
 vim.opt.breakindent = true -- enable break indent
 local tabspace = 4
-vim.opt.tabstop = tabspace -- insert 2 spaces for a tab
+vim.opt.tabstop = tabspace -- insert `tabspace` spaces for a tab
 vim.opt.shiftwidth = tabspace -- shifting
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.number = true -- set numbered lines
@@ -28,3 +29,13 @@ vim.opt.cursorline = true -- Show line of cursor
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Highlight on yank
+vim.opt.hlsearch = true
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})

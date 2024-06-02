@@ -32,18 +32,6 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-    -- The following remap is "space e" which uses the command ":Lex 30+Enter"
-    keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-    -- The <cr> stands for "carriage return" which is just the Enter key.
-    -- Command ":Lex" is short for ":Lexplore" or "left-hand explorer"
-    -- The number 30 that follows is the size of the window
-elseif status_ok then
-    -- NvimTree
-    keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-end
-
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
 -- Here we map "Shift-l" and "Shift-h" for next and previous buffers
@@ -55,11 +43,11 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Move text up and down
+-- Move selection up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
--- Now we remap "p" so that what we yanked first stays there 
+-- Now we remap "p" so that what we yanked first stays there
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
@@ -75,13 +63,13 @@ keymap("n", "<C-\\>", ":terminal<CR>a", opts)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- Telescope
@@ -93,6 +81,9 @@ keymap("n", "<leader>bb", ":Telescope buffers<CR>", opts)
 -- Remap keys to allow for softwrapped navigations
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
+
+-- NvimTree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Map keys for Gitsigns
 keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
