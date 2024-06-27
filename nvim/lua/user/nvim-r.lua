@@ -9,5 +9,6 @@ rnvim.setup({
         'RSendFunction', 'RESendFunction', 'RDSendFunction',
         'RSendMBlock', 'RESendMBlock', 'RDSendMBlock',
         'REDSendMBlock'
-    }
+    },
+    pipe_keymap = ""
 })

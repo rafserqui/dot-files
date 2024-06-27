@@ -6,7 +6,7 @@ require("user.mason")
 require("user.cmp")
 
 -- Require plugins options
-require("user.alpha")
+require("user.dashboard")
 require("user.bufferline")
 require("user.colorscheme")
 require("user.gitsigns")

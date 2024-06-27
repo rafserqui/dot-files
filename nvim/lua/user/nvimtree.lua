@@ -74,6 +74,7 @@ local function on_attach(bufnr)
     --]]
 
     -- Mappings migrated from view.mappings.list
+    vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
     vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
     vim.keymap.set("n", "r", api.fs.rename, opts("Rename"))
     vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))

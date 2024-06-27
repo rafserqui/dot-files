@@ -35,8 +35,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
 -- Here we map "Shift-l" and "Shift-h" for next and previous buffers
-keymap("n", "<S-l>", ":bNext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bNext<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Visual Mode --
 -- Stay in indent mode
@@ -65,11 +65,11 @@ keymap("n", "<C-\\>", ":terminal<CR>a", opts)
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
 
 -- Telescope
