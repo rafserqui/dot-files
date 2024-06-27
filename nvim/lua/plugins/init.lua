@@ -50,11 +50,7 @@ return {
     { "lewis6991/gitsigns.nvim" },
 
     -- Colorschemes
-    {
-        "rose-pine/neovim",
-        name = "rose-pine"
-    },
-    -- { "Shatur/neovim-ayu" },
+    { "Shatur/neovim-ayu" },
     -- { "diegoulloao/neofusion.nvim", priority = 1000, config = true },
 
     -- Statusline

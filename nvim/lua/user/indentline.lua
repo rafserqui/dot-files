@@ -4,7 +4,10 @@ if not status_ok then
 end
 
 indentline.setup {
-    exclude = { buftypes = { "help" }},
+    exclude = {
+        buftypes = { "help" },
+        filetypes = { "dashboard" }
+    },
     whitespace = { remove_blankline_trail = false },
     -- indent = { char = '┊' },
 }

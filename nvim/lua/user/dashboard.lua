@@ -61,7 +61,7 @@ conf.center = {
 dashboard.setup({
     theme = 'doom',
     shortcut_type = 'number',
-    config = conf
+    config = conf,
 })
 
 api.nvim_create_autocmd("FileType", {

@@ -1,7 +1,5 @@
--- local colorscheme = "onedark" -- "tokyonight-moon" "tokyonight-day" "gruvbox-material"
--- local colorscheme = "neofusion"
--- local colorscheme = "ayu-mirage"
-local colorscheme = "rose-pine-moon"
+local colorscheme = "ayu-mirage"
+-- local colorscheme = "default"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
