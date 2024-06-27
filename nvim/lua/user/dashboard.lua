@@ -53,7 +53,7 @@ conf.center = {
     {
         icon = "󰅗  ",
         desc = "Quit",
-        action = ":qa<CR>",
+        action = ":qa",
         key = "q",
     },
 }
