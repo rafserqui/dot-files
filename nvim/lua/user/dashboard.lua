@@ -39,6 +39,12 @@ conf.center = {
         key = "r",
     },
     {
+        icon = "󰈬  ",
+        desc = "Find word",
+        action = ":Telescope live_grep",
+        key = "t",
+    },
+    {
         icon = "  ",
         desc = "Config",
         action = ":e ~/.config/nvim/init.lua",
