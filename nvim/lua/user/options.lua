@@ -5,26 +5,42 @@ vim.g.maplocalleader = " "
 -- Nerd Font
 vim.g.have_nerd_font = true
 
--- :help options
-vim.opt.clipboard = "unnamedplus" -- access system clipboard
-vim.opt.cmdheight = 2 -- more space in the neovim command line
-vim.opt.conceallevel = 2 -- so that `` is visible in markdown files
-vim.opt.mouse = "a" -- allow mouse use in neovim
-vim.opt.ignorecase = true -- case insensitive search unless \C or capital in search
-vim.opt.smartcase = true -- smart case
-vim.opt.splitright = true -- all vertical splits go to the right
-vim.opt.splitbelow = true -- all horizontal splits go below
+-- Relative numbers in lines?
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = true -- set relative numbered lines
+
+-- Do not show the mode because it goes in the statusline
+vim.opt.showmode = false
+
+-- Clipboard synced between OS and nvim
+vim.opt.clipboard = "unnamedplus"
+
+-- Break indents and tab spaces
 vim.opt.breakindent = true -- enable break indent
 local tabspace = 4
 vim.opt.tabstop = tabspace -- insert `tabspace` spaces for a tab
 vim.opt.shiftwidth = tabspace -- shifting
 vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.number = true -- set numbered lines
-vim.opt.relativenumber = true -- set relative numbered lines
-vim.opt.signcolumn = "yes" -- always show the sign column
+
+-- Case-insensitive search unless \C or capital in search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- How splits work
+vim.opt.splitright = true -- all vertical splits go to the right
+vim.opt.splitbelow = true -- all horizontal splits go below
+
+-- Always show the sign column
+vim.opt.signcolumn = "yes"
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
+vim.opt.cmdheight = 2 -- more space in the neovim command line
+vim.opt.conceallevel = 2 -- so that `` is visible in markdown files
+vim.opt.mouse = "a" -- allow mouse use in neovim
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.completeopt = "menuone,noselect" -- better completion experience
-vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 vim.opt.cursorline = true -- Show line of cursor
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -39,3 +55,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Disable netrw (advised for NvimTree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

@@ -65,11 +65,11 @@ keymap("n", "<C-\\>", ":terminal<CR>a", opts)
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- Telescope
@@ -103,9 +103,6 @@ keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
 
 -- Typst view pdf
 keymap("n", "<leader>lt", ":TypstWatch<CR>", opts)
-
--- Fire up the Julia REPL
--- keymap("n", "<leader>jr", ":Repl julia<CR>", opts)
 
 -- Hide highlight after search
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
