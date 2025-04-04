@@ -10,7 +10,7 @@ vim.opt.number = true -- set numbered lines
 vim.opt.relativenumber = true -- set relative numbered lines
 
 -- Do not show the mode because it goes in the statusline
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 -- Clipboard synced between OS and nvim
 vim.opt.clipboard = "unnamedplus"
@@ -42,6 +42,11 @@ vim.opt.mouse = "a" -- allow mouse use in neovim
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.completeopt = "menuone,noselect" -- better completion experience
 vim.opt.cursorline = true -- Show line of cursor
+vim.api.nvim_create_autocmd("ExitPre", {
+	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
+	command = "set guicursor=a:ver90",
+	desc = "Set cursor back to beam when leaving Neovim.",
+})
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -57,5 +62,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Disable netrw (advised for NvimTree)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1

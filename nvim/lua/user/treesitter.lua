@@ -1,28 +1,20 @@
+-- Treesitter --- Fancy syntax highlighting per language
 return {
 	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
 	tag = nil,
 	branch = "master",
-	run = ":TSUpdate",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	opts = {
 		-- Add languages to be installed
 		ensure_installed = {
-			"r",
-			"markdown",
-			"markdown_inline",
-			"matlab",
-			"julia",
-			"bash",
-			"yaml",
-			"lua",
-			"vim",
-			"query",
-			"vimdoc",
-			"css",
-			"python",
-			"latex",
+			"latex", "julia", "r", "rnoweb",
+			"matlab", "csv", "markdown",
+			"markdown_inline", "python", "lua",
+			"bash", "yaml", "vim", "query",
+			"vimdoc", "css",
 		},
 		highlight = {
 			enable = true,
