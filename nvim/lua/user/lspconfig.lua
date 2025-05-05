@@ -1,4 +1,4 @@
--- LSP communicate between editor and language
+-- LSP communicate between editor and languagelspconf
 -- This is useful for errors, definitions...
 -- Editor is the client, server is the language
 
@@ -58,32 +58,35 @@ return {
 							telemetry = false,
 						},
 					},
-				},
+                    single_file_support = true,
+                },
                 marksman = {
                     filetypes = { "markdown", "quarto" },
-					root_dir = require("lspconfig.util").root_pattern(".git", ".marksman.toml", "_quarto.yml"),
+                    root_dir = require("lspconfig.util").root_pattern(".git", ".marksman.toml", "_quarto.yml"),
                 },
-				pyright = {},
+                pyright = {},
                 lua_ls = {
                     settings = { Lua = { telemetry = { enable = false } } }
                 },
             }
 
-			-- Ensure the servers and tools above are installed
-			--  To check the current status of installed tools and/or manually install
-			--  other tools, you can run
-			--    :Mason
-			--
-			--  You can press `g?` for help in this menu.
-			require("mason").setup(settings)
+            -- Ensure the servers and tools above are installed
+            --  To check the current status of installed tools and/or manually install
+            --  other tools, you can run
+            --    :Mason
+            --
+            --  You can press `g?` for help in this menu.
+            require("mason").setup(settings)
 
             -- Ensure Mason installs the LSPs
-			local ensure_installed = vim.tbl_keys(servers or {})
-			require("mason-tool-installer").setup({
-                ensure_installed = ensure_installed 
+            local ensure_installed = vim.tbl_keys(servers or {})
+            require("mason-tool-installer").setup({
+                ensure_installed = ensure_installed
             })
 
             require("mason-lspconfig").setup({
+                ensure_installed = ensure_installed,
+                automatic_installation = true,
                 handlers = {
                     function(server_name)
                         local server = servers[server_name] or {}

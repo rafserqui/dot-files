@@ -35,8 +35,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Buffer Navigation --
 -- Buffers are "kind of" like tabs, to navigate between them we can use ":bNext"
 -- Here we map "Shift-l" and "Shift-h" for next and previous buffers
--- keymap("n", "<S-l>", ":bNext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bNext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Visual Mode --
 -- Stay in indent mode
@@ -77,6 +77,7 @@ keymap("n", "<leader>ff", ":Telescope find_files ignore=false<CR>", opts)
 keymap("n", "<leader>tt", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>bb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 
 -- Remap keys to allow for softwrapped navigations
 keymap("n", "j", "gj", opts)
@@ -92,9 +93,8 @@ keymap("n", "<leader>gu", ":Gitsigns reset_hunk<CR>", opts)
 keymap("n", "<leader>gbu", ":Gitsigns reset_buffer<CR>", opts)
 
 -- Map keys for diagnostics
-keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
-keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
+keymap("n", "<leader>ww", ":lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<space>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- Quarto Preview
@@ -106,3 +106,22 @@ keymap("n", "<leader>lt", ":TypstWatch<CR>", opts)
 
 -- Hide highlight after search
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
+
+-- Start Julia REPL
+vim.api.nvim_create_autocmd("TermOpen", {
+    group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+    callback = function()
+        vim.opt.number = false
+        vim.opt.relativenumber = false
+    end,
+})
+
+local job_id = 0
+vim.keymap.set("n", "<space>js", function()
+    vim.cmd.vnew()
+    vim.cmd.term("julia")
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0, 15)
+
+    job_id = vim.bo.channel
+end)

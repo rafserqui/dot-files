@@ -37,7 +37,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.inccommand = "split"
 
 vim.opt.cmdheight = 2 -- more space in the neovim command line
-vim.opt.conceallevel = 2 -- so that `` is visible in markdown files
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.mouse = "a" -- allow mouse use in neovim
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.completeopt = "menuone,noselect" -- better completion experience

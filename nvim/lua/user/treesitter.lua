@@ -2,7 +2,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	tag = nil,
 	branch = "master",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",

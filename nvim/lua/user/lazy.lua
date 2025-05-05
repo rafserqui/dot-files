@@ -27,8 +27,17 @@ end
 -- Install your plugins here
 return lazy.setup({
 	{ "Shatur/neovim-ayu" },
-    require("user/lualine"),
-    require("user/treesitter"),
-    require("user/blink"),
-    require("user/lspconfig"),
+    require("user.lualine"),
+    require("user.treesitter"),
+    require("user.blink"),
+    require("user.lspconfig"),
+	require("user.nvimtree"),
+    require("user.telescope"),
+	require("user.nvim-r"),
+    require("user.gitsigns"),
+    require("user.quarto"),
+    require("user.coderunner"),
+
+	-- Latex
+	{ "lervag/vimtex", lazy = false },
 })
