@@ -26,7 +26,9 @@ end
 
 -- Install your plugins here
 return lazy.setup({
-	{ "Shatur/neovim-ayu" },
+	--{ "Shatur/neovim-ayu" },
+    {"rose-pine/neovim", name = "rose-pine"},
+
     require("user.lualine"),
     require("user.treesitter"),
     require("user.blink"),
@@ -40,4 +42,7 @@ return lazy.setup({
 
 	-- Latex
 	{ "lervag/vimtex", lazy = false },
+
+    -- Support for Julia
+    { "JuliaEditorSupport/julia-vim" },
 })

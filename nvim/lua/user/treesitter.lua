@@ -2,10 +2,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	branch = "master",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
+    main = "nvim-treesitter.configs",
 	opts = {
 		-- Add languages to be installed
 		ensure_installed = {
@@ -15,6 +12,7 @@ return {
 			"bash", "yaml", "vim", "query",
 			"vimdoc", "css",
 		},
+        auto_install = true,
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
