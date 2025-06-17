@@ -101,9 +101,6 @@ keymap("n", "<space>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
 keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
 
--- Typst view pdf
-keymap("n", "<leader>lt", ":TypstPreview<CR>", opts)
-
 -- Hide highlight after search
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
 
@@ -136,3 +133,19 @@ vim.keymap.set("n", "<space>ms", function()
 
     job_id_matlab = vim.bo.channel
 end)
+
+-- Typst view PDF
+vim.api.nvim_create_user_command("OpenPdf", function()
+    local filepath = vim.api.nvim_buf_get_name(0)
+    if filepath:match("%.typ$") then
+        local pdf_path = filepath:gsub("%.typ$", ".pdf")
+        vim.system({ "open", pdf_path })
+    end
+end, {})
+
+-- Typst compile is <leader>tc, followed by <leader>tv shows PDF
+keymap("n", "<leader>tc", ":LspTinymistExportPdf<CR>", opts)
+keymap("n", "<leader>tv", ":OpenPdf<CR>", opts)
+
+-- Preview is done with <leader>tp
+keymap("n", "<leader>tp", ":TypstPreviewToggle<CR>", opts)

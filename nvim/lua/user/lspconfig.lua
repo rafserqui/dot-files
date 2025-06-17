@@ -178,8 +178,12 @@ return {
                 },
                 tinymist = {
                     settings = {
-                        exportPDF = "onType",
-                        outputPath = "$root/target/$dir/$name",
+                        exportPDF = "onSave",
+                        root_dir = function (_, bufnr)
+                            local root = vim.fs.root(bufnr, { ".git" }) or vim.fn.expand("%:p:h")
+                            vim.notify("Tinymist root_dir: " .. root)
+                            return root
+                        end
                     }
                 },
             }
