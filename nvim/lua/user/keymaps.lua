@@ -125,3 +125,14 @@ vim.keymap.set("n", "<space>js", function()
 
     job_id = vim.bo.channel
 end)
+
+-- Matlab terminal
+local job_id_matlab = 0
+vim.keymap.set("n", "<space>ms", function()
+    vim.cmd.vnew()
+    vim.cmd.term("matlab -nodesktop -nosplash")
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0, 15)
+
+    job_id_matlab = vim.bo.channel
+end)
