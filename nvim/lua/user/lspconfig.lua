@@ -176,6 +176,7 @@ return {
                 lua_ls = {
                     settings = { Lua = { telemetry = { enable = false } } }
                 },
+                tinymist = {},
             }
 
             -- Ensure the servers and tools above are installed
