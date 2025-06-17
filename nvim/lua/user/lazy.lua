@@ -39,6 +39,7 @@ return lazy.setup({
     require("user.gitsigns"),
     require("user.quarto"),
     require("user.coderunner"),
+    require("user.typst"),
 
 	-- Latex
 	{ "lervag/vimtex", lazy = false },

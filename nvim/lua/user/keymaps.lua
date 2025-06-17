@@ -102,7 +102,7 @@ keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
 keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
 
 -- Typst view pdf
-keymap("n", "<leader>lt", ":TypstWatch<CR>", opts)
+keymap("n", "<leader>lt", ":TypstPreview<CR>", opts)
 
 -- Hide highlight after search
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
