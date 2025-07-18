@@ -156,7 +156,7 @@ return {
             local servers = {
                 texlab = {},
                 r_language_server = {},
-                -- julials = { },
+                -- julials = {},
                 matlab_ls = {
                     settings = {
                         matlab = {
@@ -217,17 +217,18 @@ return {
                 },
             }
 
-            -- Setup Julia LSP
-            local julia_ls_script = vim.fs.joinpath(vim.fn.stdpath('config'), "helpers", "julia_languageserver.jl")
-            require("lspconfig").julials.setup({
-                cmd = {"julia", "--startup-file=no", "--history-file=no", julia_ls_script},
-                single_file_support = true,
-                on_attach = function(_, bufnr)
-                    -- Disable automatic formatexpr since the LS.jl formatter isn't so nice.
-                    vim.bo[bufnr].formatexpr = ''
-                end,
-                capabilities = capabilities,
-            })
+            -- -- Setup Julia LSP
+            -- local julia_ls_script = vim.fs.joinpath(vim.fn.stdpath('config'), "helpers", "julia_languageserver.jl")
+            -- require("lspconfig").julials.setup({
+            --     cmd = {"julia", "--startup-file=no", "--history-file=no", julia_ls_script},
+            --     single_file_support = true,
+            --     on_attach = function(_, bufnr)
+            --         -- Disable automatic formatexpr since the LS.jl formatter isn't so nice.
+            --         vim.bo[bufnr].formatexpr = ''
+            --     end,
+            --     capabilities = capabilities,
+            -- })
         end,
     },
+
 }

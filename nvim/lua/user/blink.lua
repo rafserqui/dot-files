@@ -21,6 +21,7 @@ return {
                     'rafamadriz/friendly-snippets',
                     config = function()
                         require('luasnip.loaders.from_vscode').lazy_load()
+                        require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
                     end,
                 },
             },
@@ -28,37 +29,45 @@ return {
         },
         'folke/lazydev.nvim',
     },
-            ---@module 'blink.cmp'
-            ---@type blink.cmp.Config
-            opts = {
-                keymap = {
-                    preset = "default",
-                    ['<CR>'] = { 'accept', 'fallback' },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+        keymap = {
+            preset = "default",
+            ['<CR>'] = { 'accept', 'fallback' },
 
-                    ['<Tab>'] = { 'select_next', 'fallback' },
-                    ['<S-Tab>'] = { 'select_prev', 'fallback' },
-                },
-                appearance = { nerd_font_variant = 'mono' },
-                completion = {
-                    documentation = { auto_show = false },
-                    list = { selection = { preselect = false } },
-                },
-                sources = {
-                    default = { 'lsp', 'path', 'snippets', 'lazydev' },
-                    providers = {
-                        lazydev = {
-                            module = 'lazydev.integrations.blink',
-                            score_offset = 100
-                        },
+            ['<Tab>'] = { 'select_next', 'fallback' },
+            ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        },
+        appearance = { nerd_font_variant = 'mono' },
+        completion = {
+            documentation = { auto_show = false },
+            list = { selection = { preselect = false } },
+            menu = {
+                draw = {
+                    columns = {
+                        { "label", "label_description", gap = 5 },
+                        { "kind_icon", "kind", gap = 1 }
                     },
+                }
+            }
+        },
+        sources = {
+            default = { 'lsp', 'path', 'snippets', 'lazydev' },
+            providers = {
+                lazydev = {
+                    module = 'lazydev.integrations.blink',
+                    score_offset = 100
                 },
-                snippets = { preset = 'luasnip' },
-                fuzzy = { implementation = "lua" },
-                -- No completions in the command line given by blink
-                cmdline = { enabled = false },
-
-                -- Shows a signature help window while you type arguments for a function
-                signature = { enabled = true },
             },
-            opts_extend = { "sources.default" }
-        }
+        },
+        snippets = { preset = 'luasnip' },
+        fuzzy = { implementation = "lua" },
+        -- No completions in the command line given by blink
+        cmdline = { enabled = false },
+
+        -- Shows a signature help window while you type arguments for a function
+        signature = { enabled = true },
+    },
+    opts_extend = { "sources.default" }
+}

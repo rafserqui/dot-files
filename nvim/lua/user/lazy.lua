@@ -26,24 +26,27 @@ end
 
 -- Install your plugins here
 return lazy.setup({
-	--{ "Shatur/neovim-ayu" },
+    --{ "Shatur/neovim-ayu" },
     {"rose-pine/neovim", name = "rose-pine"},
 
     require("user.lualine"),
     require("user.treesitter"),
     require("user.blink"),
     require("user.lspconfig"),
-	require("user.nvimtree"),
+    require("user.nvimtree"),
     require("user.telescope"),
-	require("user.nvim-r"),
+    require("user.nvim-r"),
     require("user.gitsigns"),
     require("user.quarto"),
     require("user.coderunner"),
     require("user.typst"),
 
-	-- Latex
-	{ "lervag/vimtex", lazy = false },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+    },
 
-    -- Support for Julia
-    { "JuliaEditorSupport/julia-vim" },
+    -- Latex
+    { "lervag/vimtex", lazy = false },
 })

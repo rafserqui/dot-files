@@ -16,3 +16,5 @@ require("typst-preview").setup({
     end,
 })
 
+
+require("user.lsp_julia")
