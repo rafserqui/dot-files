@@ -60,7 +60,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
--- Disable netrw (advised for NvimTree)
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1

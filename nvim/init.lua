@@ -1,9 +1,9 @@
 require("user.options")
 require("user.lazy")
-require("user.colorscheme")
+require("user.lsp_julia")
 require("user.keymaps")
-require("user.latex")
 
+-- Setup Typst
 require("typst-preview").setup({
     dependencies_bin = {
         ['tinymist'] = 'tinymist',
@@ -16,5 +16,5 @@ require("typst-preview").setup({
     end,
 })
 
-
-require("user.lsp_julia")
+-- Color
+vim.cmd("colorscheme vague")
