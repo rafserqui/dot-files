@@ -89,6 +89,7 @@ keymap("n", "<leader>fb", ":lua vim.lsp.buf.format<CR>", opts)
 
 -- Find files and text
 keymap('n', '<leader>ff', ":Pick files<CR>", opts)
+keymap('n', '<leader>bb', ":Pick buffers<CR>", opts)
 keymap('n', '<leader>tt', ":Pick grep_live<CR>", opts)
 
 -- NvimTree
@@ -149,3 +150,9 @@ vim.api.nvim_create_user_command('UpdatePackages', function()
     vim.pack.update()
     vim.cmd('write')
 end, { desc = "Fetch and update packages" })
+
+-- Update plugins
+keymap("n", "<leader>pu", ":UpdatePackages<CR>", opts)
+
+-- keymap for sending selected region
+vim.keymap.set("v", "<leader>ss", "<Plug>SlimeRegionSend", { remap = true, silent = false })

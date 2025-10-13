@@ -26,6 +26,8 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
 end
 
+local icons = require("mini.icons")
+
 require("nvim-tree").setup({
     on_attach = on_attach,
     hijack_directories = {
@@ -33,41 +35,20 @@ require("nvim-tree").setup({
     },
     update_cwd = true,
     renderer = {
-        add_trailing = false,
-        group_empty = false,
-        highlight_git = true,
-        highlight_opened_files = "none",
-        root_folder_label = false,
-        root_folder_modifier = ":t",
-        indent_markers = {
-            enable = false,
-            icons = {
-                corner = "└ ",
-                edge = "│ ",
-                none = "  ",
-            },
-        },
         icons = {
             webdev_colors = true,
             git_placement = "before",
             padding = " ",
-            symlink_arrow = " ➛ ",
-            show = {
-                file = true,
-                folder = true,
-                folder_arrow = true,
-                git = true,
-            },
             glyphs = {
-                default = "",
-                symlink = "",
+                default = icons.get("file", "default"),
+                symlink = icons.get("file", "symlink"),
                 folder = {
-                    default = "",
-                    open = "",
-                    empty = "",
-                    empty_open = "",
-                    symlink = "",
-                    symlink_open = "",
+                    default      = icons.get("directory", "default"),
+                    open         = icons.get("directory", "open"),
+                    empty        = icons.get("directory", "empty"),
+                    empty_open   = icons.get("directory", "empty_open"),
+                    symlink      = icons.get("directory", "symlink"),
+                    symlink_open = icons.get("directory", "symlink_open"),
                 },
                 git = {
                     unstaged = "",
@@ -80,6 +61,12 @@ require("nvim-tree").setup({
                 },
             },
         },
+        add_trailing = false,
+        group_empty = false,
+        highlight_git = true,
+        highlight_opened_files = "none",
+        root_folder_label = false,
+        root_folder_modifier = ":t",
     },
     diagnostics = {
         enable = true,
