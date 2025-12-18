@@ -40,8 +40,8 @@ require("nvim-tree").setup({
             git_placement = "before",
             padding = " ",
             glyphs = {
-                default = icons.get("file", "default"),
-                symlink = icons.get("file", "symlink"),
+                -- default = icons.get("file", "default"),
+                -- symlink = icons.get("file", "symlink"),
                 folder = {
                     default      = icons.get("directory", "default"),
                     open         = icons.get("directory", "open"),

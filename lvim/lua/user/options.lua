@@ -36,6 +36,9 @@ vim.opt.splitbelow = true -- all horizontal splits go below
 -- Always show the sign column
 vim.opt.signcolumn = "yes"
 
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
 vim.opt.cmdheight = 2 -- more space in the neovim command line
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.mouse = "a" -- allow mouse use in neovim
@@ -45,7 +48,7 @@ vim.opt.cursorline = true -- Show line of cursor
 vim.api.nvim_create_autocmd("ExitPre", {
 	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
 	command = "set guicursor=a:ver90",
-	desc = "Set cursor back to beam when leaving Neovim.",
+	desc = "Set cursor back to beam when leaving Neovim."
 })
 
 -- Minimal number of screen lines to keep above and below the cursor.

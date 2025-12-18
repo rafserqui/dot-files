@@ -13,7 +13,7 @@ vim.pack.add({
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
 
 	-- Treesitter and LSP configs
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 
@@ -46,6 +46,9 @@ vim.lsp.enable({
     "tinymist", "julials"
 })
 
+-- Require Julia config
+require("user.lsp_julia")
+
 -- Colors
 require("rose-pine").setup({
     styles = { transparency = false },
@@ -71,14 +74,18 @@ require("fidget").setup({})
 require("user.nvimtree")
 
 -- Require treesitter
-require("nvim-treesitter.configs").setup {
-    ensure_installed = { "lua", "latex", "r", "rnoweb", "yaml",
-        "markdown", "matlab", "python", "typst", "julia" },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}
+require("nvim-treesitter").install({ "bash", "css", "csv", "lua",
+        "latex", "r", "rnoweb", "yaml",
+        "markdown", "markdown_inline", "matlab", "python",
+        "typst", "julia", "query", "vim", "vimdoc" })
+
+-- Start TS for filetypes
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { "julia", "lua", "python", "r", "markdown", "yaml", "matlab" },
+    callback = function()
+        vim.treesitter.start()
+    end,
+})
 
 -- Config completion
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -135,11 +142,16 @@ require("r").setup({
     },
 })
 
--- Require Julia config
-require("user.lsp_julia")
-
 -- Vim-Slime
 vim.g.slime_input_pid = false
 vim.g.slime_suggest_default = true
 vim.g.slime_menu_config = false
 vim.g.slime_neovim_ignore_unlisted = false
+
+-- Typst
+require("typst-preview").setup {
+    debug = false,
+    dependencies_bin = {
+        ['tinymist'] = 'tinymist',
+    },
+}
