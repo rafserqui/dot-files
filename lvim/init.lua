@@ -25,6 +25,8 @@ vim.pack.add({
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 	{ src = "https://github.com/lervag/vimtex" },
 	{ src = "https://github.com/R-nvim/R.nvim" },
+	{ src = "https://github.com/quarto-dev/quarto-nvim" },
+	{ src = "https://github.com/jmbuhr/otter.nvim" },
 
 	-- Completion
 	{ src = "https://github.com/saghen/blink.cmp" },
@@ -37,6 +39,11 @@ vim.pack.add({
 
     -- Code runner
     { src = "https://github.com/jpalardy/vim-slime" },
+})
+
+-- LSP capabilities (blink.cmp adds snippet support)
+vim.lsp.config('*', {
+    capabilities = require('blink.cmp').get_lsp_capabilities(),
 })
 
 -- Enable LSPs
@@ -88,7 +95,9 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Config completion
-require('luasnip.loaders.from_vscode').lazy_load()
+local luasnip_loader = require('luasnip.loaders.from_vscode')
+luasnip_loader.lazy_load()
+luasnip_loader.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
 require('blink.cmp').setup({
     keymap = {
         preset = "default",
@@ -147,6 +156,16 @@ vim.g.slime_input_pid = false
 vim.g.slime_suggest_default = true
 vim.g.slime_menu_config = false
 vim.g.slime_neovim_ignore_unlisted = false
+
+-- Quarto
+require("quarto").setup({
+    lspFeatures = {
+        enabled = true,
+        languages = { "r", "julia" },
+        completion = { enabled = true },
+    },
+    codeRunner = { enabled = false },
+})
 
 -- Typst
 require("typst-preview").setup {

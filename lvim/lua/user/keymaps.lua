@@ -156,3 +156,9 @@ keymap("n", "<leader>pu", ":UpdatePackages<CR>", opts)
 
 -- keymap for sending selected region
 vim.keymap.set("v", "<leader>ss", "<Plug>SlimeRegionSend", { remap = true, silent = false })
+
+------------------------------------------------------------
+-- [[ Quarto ]] --
+------------------------------------------------------------
+keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
+keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)

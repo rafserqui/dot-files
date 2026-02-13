@@ -1,0 +1,10 @@
+{
+  "juliacode": {
+    "prefix": ["jco"],
+    "body": ["```{julia}", "$1", "```"]
+  },
+  "rcode": {
+    "prefix": ["rco"],
+    "body": ["```{r}", "$1", "```"]
+  }
+}
