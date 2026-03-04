@@ -70,7 +70,32 @@ require("user.keymaps")
 require("user.clean_pack")
 
 -- Require packages for setup (defaults)
-require("mini.pick").setup()
+local pick = require("mini.pick")
+pick.setup()
+-- Prefer including hidden files in file picker when rg/fd are available
+pick.registry.files = function(local_opts)
+    local cwd = nil
+    if type(local_opts) == 'table' then
+        cwd = local_opts.cwd
+        local_opts.cwd = nil
+    end
+    local opts = {
+        source = {
+            cwd = cwd,
+            show = function(buf_id, items, query) pick.default_show(buf_id, items, query, { show_icons = true })
+            end
+        }
+    }
+    if vim.fn.executable('rg') == 1 then
+        local cmd = { 'rg', '--files', '--hidden', '--color=never', '--glob', '!.git/**' }
+        return pick.builtin.cli({ command = cmd, spawn_opts = { cwd = cwd } }, opts)
+    elseif vim.fn.executable('fd') == 1 then
+        local cmd = { 'fd', '--type=f', '--hidden', '--color=never', '--exclude', '.git' }
+        return pick.builtin.cli({ command = cmd, spawn_opts = { cwd = cwd } }, opts)
+    else
+        return pick.builtin.files(local_opts, opts)
+    end
+end
 require('mini.icons').setup()
 require("mason").setup()
 require("ibl").setup()
