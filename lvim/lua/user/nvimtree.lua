@@ -1,3 +1,19 @@
+local function set_relative_numbers(winid)
+	if not winid or not vim.api.nvim_win_is_valid(winid) then
+		return
+	end
+
+	local bufnr = vim.api.nvim_win_get_buf(winid)
+	local is_tree = vim.bo[bufnr].filetype == "NvimTree"
+
+	if not is_tree and vim.bo[bufnr].buftype ~= "" then
+		return
+	end
+
+	vim.api.nvim_set_option_value("number", true, { win = winid })
+	vim.api.nvim_set_option_value("relativenumber", true, { win = winid })
+end
+
 local function on_attach(bufnr)
 	local api = require("nvim-tree.api")
 
@@ -12,7 +28,7 @@ local function on_attach(bufnr)
 	end
 
 	-- default mappings
-	api.config.mappings.default_on_attach(bufnr)
+    api.map.on_attach.default(bufnr)
 
 	-- Mappings migrated from view.mappings.list
 	vim.keymap.set("n", "a", api.fs.create, opts("Create"))
@@ -28,6 +44,13 @@ end
 
 local icons = require("mini.icons")
 
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+	group = vim.api.nvim_create_augroup("user-relative-numbers", { clear = true }),
+	callback = function()
+		set_relative_numbers(vim.api.nvim_get_current_win())
+	end,
+})
+
 require("nvim-tree").setup({
     on_attach = on_attach,
     hijack_directories = {
@@ -40,8 +63,6 @@ require("nvim-tree").setup({
             git_placement = "before",
             padding = " ",
             glyphs = {
-                -- default = icons.get("file", "default"),
-                -- symlink = icons.get("file", "symlink"),
                 folder = {
                     default      = icons.get("directory", "default"),
                     open         = icons.get("directory", "open"),
@@ -84,7 +105,7 @@ require("nvim-tree").setup({
     view = {
         width = 30,
         side = "left",
-        number = false,
-        relativenumber = false,
+        number = true,
+        relativenumber = true,
     },
 })
