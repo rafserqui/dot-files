@@ -27,16 +27,23 @@ vim.pack.add({
 	{ src = "https://github.com/jmbuhr/otter.nvim" },
 
 	-- Completion
-	{ src = "https://github.com/saghen/blink.cmp" },
+	{ src = "https://github.com/saghen/blink.cmp", version = "1.*" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/folke/lazydev.nvim" },
+
+    -- Copilot completion
+    { src = "https://github.com/zbirenbaum/copilot.lua" },
+    { src = "https://github.com/giuxtaposition/blink-cmp-copilot" },
 
 	-- Git
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
     -- Code runner
     { src = "https://github.com/jpalardy/vim-slime" },
+
+    -- Markdown preview
+    { src = "https://github.com/brianhuster/live-preview.nvim" },
 })
 
 -- LSP capabilities (blink.cmp adds snippet support)
@@ -115,6 +122,12 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+-- Setup copilot for backend ONLY, let blink handle completions
+require("copilot").setup({
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+})
+
 -- Config completion
 local luasnip_loader = require('luasnip.loaders.from_vscode')
 luasnip_loader.lazy_load()
@@ -140,11 +153,17 @@ require('blink.cmp').setup({
         }
     },
     sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'copilot' },
         providers = {
             lazydev = {
                 module = 'lazydev.integrations.blink',
                 score_offset = 100
+            },
+            copilot = {
+                name = 'copilot',
+                module = 'blink-cmp-copilot',
+                score_offset = 100,
+                async = true,
             },
         },
     },
@@ -273,3 +292,6 @@ vim.api.nvim_create_autocmd("LspProgress", {
         })
     end,
 })
+
+-- Require preview for markdown
+require('livepreview.config').set()

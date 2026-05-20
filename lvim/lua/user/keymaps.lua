@@ -78,7 +78,13 @@ keymap("n", "k", "gk", opts)
 
 -- Map keys for diagnostics
 keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
-keymap("n", "<leader>ww", ":lua vim.diagnostic.goto_next()<CR>", opts)
+-- keymap("n", "<leader>ww", ":lua vim.diagnostic.goto_next()<CR>", opts)
+
+-- Global config for how jump behaves
+vim.diagnostic.config({ jump = { float = true, }, })
+keymap("n", "<leader>ww", ":lua vim.diagnostic.jump()<CR>", opts)
+
+-- List of diagnostics
 keymap("n", "<space>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- Hide highlight after search
@@ -100,11 +106,6 @@ keymap("n", "<leader>gg", ":Gitsigns preview_hunk<CR>", opts)
 keymap("n", "<leader>gf", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "<leader>gu", ":Gitsigns reset_hunk<CR>", opts)
 keymap("n", "<leader>gbu", ":Gitsigns reset_buffer<CR>", opts)
-
--- Map keys for diagnostics
-keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
-keymap("n", "<leader>ww", ":lua vim.diagnostic.goto_next()<CR>", opts)
-keymap("n", "<space>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 
 ------------------------------------------------------------
 -- [[ Julia ]] --
@@ -185,3 +186,25 @@ vim.keymap.set("v", "<leader>ss", "<Plug>SlimeRegionSend", { remap = true, silen
 ------------------------------------------------------------
 keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
 keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
+
+------------------------------------------------------------
+-- [[ Matlab ]] --
+------------------------------------------------------------
+vim.api.nvim_create_autocmd("TermOpen", {
+    group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+    callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+    end,
+})
+
+local job_id = 0
+vim.keymap.set("n", "<space>mm", function()
+    vim.cmd.vnew()
+    vim.cmd.term("matlab -nodesktop")
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0, 15)
+
+    job_id = vim.bo.channel
+end)
+
