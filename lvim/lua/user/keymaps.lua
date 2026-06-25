@@ -184,8 +184,41 @@ vim.keymap.set("v", "<leader>ss", "<Plug>SlimeRegionSend", { remap = true, silen
 ------------------------------------------------------------
 -- [[ Quarto ]] --
 ------------------------------------------------------------
-keymap("n", "<leader>qq", ":QuartoPreview<CR>", opts)
+keymap("n", "<leader>qq", ":QuartoPreviewFile<CR>", opts)
 keymap("n", "<leader>qc", ":QuartoClosePreview<CR>", opts)
+
+-- For previewing files in Quarto Projects
+vim.api.nvim_create_user_command("QuartoPreviewFile", function()
+    local file = vim.api.nvim_buf_get_name(0)
+
+    if file == "" then
+        vim.notify("No file in current buffer", vim.log.levels.ERROR)
+        return
+    end
+
+    local file_dir = vim.fs.dirname(file)
+    local quarto_yml = vim.fs.find("_quarto.yml", {
+        path = file_dir,
+        upward = true,
+    })[1]
+
+    local root = quarto_yml and vim.fs.dirname(quarto_yml) or file_dir
+
+    local current_tabpage = vim.api.nvim_get_current_tabpage()
+
+    vim.cmd("tabnew")
+    vim.fn.termopen({ "quarto", "preview", file }, {
+        cwd = root,
+    })
+
+    local quarto_output_buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_set_current_tabpage(current_tabpage)
+    vim.api.nvim_buf_set_var(0, "quartoOutputBuf", quarto_output_buf)
+end, {})
+
+vim.keymap.set("n", "<leader>qf", "<cmd>QuartoPreviewFile<cr>", {
+    desc = "Preview current Quarto file",
+})
 
 ------------------------------------------------------------
 -- [[ Matlab ]] --
@@ -207,4 +240,3 @@ vim.keymap.set("n", "<space>mm", function()
 
     job_id = vim.bo.channel
 end)
-

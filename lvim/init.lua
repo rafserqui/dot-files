@@ -124,6 +124,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Setup copilot for backend ONLY, let blink handle completions
 require("copilot").setup({
+    copilot_node_command = vim.fn.expand("~/.nvm/versions/node/v24.13.1/bin/node"),
     suggestion = { enabled = false },
     panel = { enabled = false },
 })
