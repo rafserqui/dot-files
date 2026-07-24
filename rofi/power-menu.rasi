@@ -1,0 +1,50 @@
+configuration {
+    show-icons: false;
+}
+
+window {
+    width: 160px;
+    location: northeast;
+    anchor: northeast;
+    x-offset: -8px;
+    y-offset: 5px; /* pushes it just below the waybar */
+    border-radius: 12px;
+    background-color: rgba(30, 30, 46, 0.98);
+    border: 1px;
+    border-color: rgba(255,255,255,0.1);
+}
+
+mainbox {
+    padding: 6px;
+    background-color: transparent;
+    spacing: 2px;
+}
+
+inputbar {
+    enabled: false; /* no search bar */
+}
+
+listview {
+    background-color: transparent;
+    lines: 4;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #cdd6f4;
+    font: "JetBrains Mono 11";
+    cursor: pointer;
+}
+
+element selected {
+    background-color: rgba(137, 180, 250, 0.2);
+    color: #89b4fa;
+}
+
+element-text {
+    background-color: transparent;
+    color: inherit;
+}

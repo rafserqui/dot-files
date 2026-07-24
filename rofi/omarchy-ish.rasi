@@ -1,0 +1,101 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    drun-display-format: "{name}";
+    display-drun: "";
+    display-run: "";
+    display-window: "";
+}
+
+* {
+    font: "JetBrainsMono Nerd Font Mono 14";
+
+    bg: rgba(24, 24, 27, 95%);
+    bg-solid: #18181b;
+    fg: #e5e7eb;
+    muted: rgba(229, 231, 235, 50%);
+    border: #52525b;
+    selected: rgba(229, 231, 235, 7%);
+    selected-fg: #ffffff;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 560px;
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+}
+
+mainbox {
+    background-color: @bg;
+    border: 2px;
+    border-color: @border;
+    border-radius: 0px;
+    padding: 20px;
+    spacing: 0px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-solid;
+    padding: 10px;
+    spacing: 0px;
+    children: [ entry ];
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: " Search...";
+    placeholder-color: @muted;
+    cursor: text;
+}
+
+listview {
+    background-color: transparent;
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    spacing: 0px;
+    lines: 8;
+    columns: 1;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    padding: 0px 0px 0px 14px;
+    spacing: 0px;
+    border-radius: 0px;
+}
+
+element selected.normal,
+element selected.active {
+    background-color: @selected;
+    text-color: @selected-fg;
+}
+
+element-icon {
+    size: 16px;
+    margin: 0px 14px 0px 0px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    padding: 14px 0px;
+    vertical-align: 0.5;
+}
+
+message,
+textbox,
+mode-switcher {
+    enabled: false;
+}
