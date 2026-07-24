@@ -1,0 +1,196 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 15,
+    "spacing": 1,
+
+    // Modules
+    "modules-left": [
+        "group/time",
+        "sway/workspaces"
+    ],
+
+    "modules-center": [
+        "mpris"
+    ],
+
+    "modules-right": [
+        "group/connectivity",
+        "group/levels",
+        "group/session",
+        "custom/power"
+    ],
+
+    // Groups
+    "group/time": {
+        "orientation": "horizontal",
+        "spacing": 0,
+        "modules": [
+            "clock#time",
+            "clock#date"
+        ]
+    },
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "spacing": 0,
+        "modules": [
+            "network",
+            "bluetooth",
+            "battery",
+            "power-profiles-daemon"
+        ]
+    },
+    "group/levels": {
+        "orientation": "horizontal",
+        "spacing": 0,
+        "modules": [
+            "backlight",
+            "pulseaudio"
+        ]
+    },
+    "group/session": {
+        "orientation": "horizontal",
+        "spacing": 0,
+        "modules": [
+            "idle_inhibitor",
+            "tray"
+        ]
+    },
+
+    // Clock and date
+    "clock#time": {
+        "interval": 1,
+        "format": " {:%H:%M}",
+        "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#date": {
+        "interval": 60,
+        "format": " {:%d/%m}",
+        "tooltip-format": "{:%Y-%m-%d}"
+    },
+
+    // Workspaces
+    "sway/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+          "1": "",
+          "2": "",
+          "3": "󰎆"
+      },
+      "persistent-workspaces": {
+          "1": [],
+          "2": [],
+          "3": []
+      }
+    },
+    "mpris": {
+        "format": "󰎈 {dynamic}",
+        "format-paused": "󰏤 {dynamic}",
+        "format-stopped": "",
+        "dynamic-order": [
+            "artist",
+            "title"
+        ],
+        "dynamic-separator": " - ",
+        "artist-len": 34,
+        "title-len": 48,
+        "dynamic-len": 84,
+        "tooltip-format": "{player}: {dynamic}",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous"
+    },
+    "network": {
+        "interval": 5,
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " up",
+        "format-linked": " link",
+        "format-disconnected": "󰤮 off",
+        "format-disabled": "󰤮 off",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "/home/rafserqui/.config/waybar/wifi_menu.sh"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": " off",
+        "format-off": " off",
+        "format-on": " 0",
+        "format-connected": " {num_connections}",
+        "format-connected-battery": " {num_connections} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%",
+        "on-click": "/home/rafserqui/.config/waybar/bluetooth_menu.sh"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": " {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+
+    "power-profiles-daemon": {
+        "format": " {icon} ",
+        "format-icons": {
+            "default": "󰾅",
+            "performance": "",
+            "balanced": "󰾅",
+            "power-saver": ""
+        }
+    },
+
+    "backlight": {
+        "format": "󰃞 {percent}%",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "{desc}: {volume}%"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        },
+        "tooltip-format": "idle Inhibitor: {status}"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 6
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/power-menu.sh"
+    }
+}

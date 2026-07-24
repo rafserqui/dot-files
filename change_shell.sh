@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update
+sudo dnf upgrade -y
 
 # Install zsh
 sudo apt install zsh

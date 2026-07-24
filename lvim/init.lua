@@ -76,6 +76,7 @@ require("user.clean_pack")
 -- Require packages for setup (defaults)
 local pick = require("mini.pick")
 pick.setup()
+
 -- Prefer including hidden files in file picker when rg/fd are available
 pick.registry.files = function(local_opts)
     local cwd = nil
@@ -124,7 +125,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Setup copilot for backend ONLY, let blink handle completions
 require("copilot").setup({
-    copilot_node_command = vim.fn.expand("~/.nvm/versions/node/v24.13.1/bin/node"),
+    copilot_node_command = vim.fn.expand("~/.nvm/versions/node/v24.14.0/bin/node"),
     suggestion = { enabled = false },
     panel = { enabled = false },
 })

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update -y
+sudo dnf upgrade -y
 
 # Icon themes
 git clone https://github.com/vinceliuice/Qogir-icon-theme.git  ~/Downloads/Qogir-icon-theme

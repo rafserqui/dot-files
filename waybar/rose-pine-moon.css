@@ -1,0 +1,293 @@
+/*
+* Variant: Rosé Pine Moon
+* Maintainer: DankChoir
+*/
+
+@define-color base            #232136;
+@define-color surface         #2a273f;
+@define-color overlay         #393552;
+
+@define-color muted           #6e6a86;
+@define-color subtle          #908caa;
+@define-color text            #e0def4;
+
+@define-color love            #eb6f92;
+@define-color gold            #f6c177;
+@define-color rose            #ea9a97;
+@define-color pine            #3e8fb0;
+@define-color foam            #9ccfd8;
+@define-color iris            #c4a7e7;
+
+@define-color highlightLow    #2a283e;
+@define-color highlightMed    #44415a;
+@define-color highlightHigh   #56526e;
+
+@define-color island          rgba(35, 33, 54, 0.90);
+@define-color islandHover     rgba(42, 39, 63, 0.96);
+@define-color islandBorder    rgba(86, 82, 110, 0.58);
+@define-color islandShadow    rgba(0, 0, 0, 0.22);
+
+* {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Noto Sans CJK JP", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+tooltip {
+    background: @base;
+    border: 1px solid @highlightMed;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @text;
+    padding: 6px 8px;
+}
+
+button {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+button:hover {
+    background: transparent;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.modules-left {
+    margin-left: 10px;
+}
+
+.modules-right {
+    margin-right: 10px;
+}
+
+#group-time,
+#time,
+#workspaces,
+#group-connectivity,
+#connectivity,
+#group-levels,
+#levels,
+#group-session,
+#session,
+#custom-power {
+    background: @island;
+    border: 1px solid @islandBorder;
+    border-radius: 9px;
+    box-shadow: 0 2px 5px @islandShadow;
+    margin: 5px 0;
+    min-height: 24px;
+}
+
+#group-time,
+#time,
+#group-connectivity,
+#connectivity,
+#group-levels,
+#levels,
+#group-session,
+#session {
+    padding: 0 7px;
+}
+
+#group-time:hover,
+#time:hover,
+#workspaces:hover,
+#group-connectivity:hover,
+#connectivity:hover,
+#group-levels:hover,
+#levels:hover,
+#group-session:hover,
+#session:hover
+#custom-power:hover {
+    background: @islandHover;
+}
+
+#clock,
+#custom-weather,
+#network,
+#battery,
+#bluetooth,
+#temperature,
+#memory,
+#backlight,
+#pulseaudio,
+#idle_inhibitor,
+#tray,
+#custom-layout {
+    background: transparent;
+    margin: 0;
+    padding: 0 7px;
+}
+
+#clock.time {
+    color: @gold;
+    padding-left: 5px;
+}
+
+#clock.date {
+    color: @gold;
+}
+
+#custom-weather {
+    color: @iris;
+    padding-right: 5px;
+}
+
+#workspaces {
+    padding: 0 10px;
+}
+
+#workspaces button {
+    border-radius: 6px;
+    color: @muted;
+    margin: 2px 1px;
+    min-width: 22px;
+    padding: 0 2px;
+}
+
+#workspaces button.active,
+#workspaces button.focused label {
+    color: @gold;
+}
+
+#workspaces button.visible {
+    color: @subtle;
+}
+
+#workspaces button.urgent {
+    color: @love;
+}
+
+#mpris {
+    color: @surface;
+    font-size: 13px;
+    margin: 0 18px;
+    padding: 0 14px;
+}
+
+#mpris.paused {
+    color: @subtle;
+}
+
+#network {
+    color: @love;
+}
+
+#network.ethernet,
+#network.wifi {
+    color: @love;
+}
+
+#network.disconnected,
+#network.disabled {
+    color: @muted;
+}
+
+#battery {
+    color: @love;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @gold;
+}
+
+#battery.warning:not(.charging) {
+    color: @gold;
+}
+
+#battery.critical:not(.charging) {
+    color: @love;
+}
+
+#bluetooth {
+    color: @rose;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @muted;
+}
+
+#temperature {
+    color: @rose;
+}
+
+#temperature.critical {
+    color: @love;
+}
+
+#memory {
+    color: @foam;
+    padding-right: 5px;
+}
+
+#backlight {
+    color: @iris;
+    padding-left: 5px;
+}
+
+#pulseaudio {
+    color: @text;
+    padding-right: 5px;
+}
+
+#pulseaudio.muted {
+    color: @muted;
+}
+
+#idle_inhibitor {
+    color: @rose;
+    padding-left: 5px;
+}
+
+#idle_inhibitor.activated {
+    color: @rose;
+}
+
+#tray {
+    color: @iris;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#custom-layout {
+    border: 1px solid @highlightHigh;
+    border-radius: 4px;
+    color: @subtle;
+    margin: 4px 1px 4px 3px;
+    min-width: 13px;
+    padding: 0 2px;
+}
+
+#custom-power {
+    font-size: 16px;
+    padding: 0 15px;
+    color: @love;
+    transition: all 0.2s;
+}
+
+/* #custom-power:hover { */
+/*     background: #ff6b6b; */
+/*     color: @love; */
+/*     border-radius: 8px; */
+/* } */
