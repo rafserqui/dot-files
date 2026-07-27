@@ -172,7 +172,8 @@
             ]
         },
         "scroll-step": 1,
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click": "/home/rafserqui/.config/waybar/audio_picker_menu.sh",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "tooltip-format": "{desc}: {volume}%"
     },
     "idle_inhibitor": {
